@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find an answer — Smart Energy GB prototype</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Prototype navigator (replaces Smart Energy GB's own header, R01) -->
+  <header class="sticky site-header proto-nav">
+    <div class="container proto-nav-row">
+      <a class="proto-home" href="../index.html" aria-label="Smart Energy GB prototypes, overview">Smart Energy GB <span>prototypes</span></a>
+      <nav aria-label="Prototypes">
+        <ul class="proto-links">
+          <li><a href="../index.html" data-proto="index">Overview</a></li>
+          <li><a href="../pages/get-a-smart-meter.html" data-proto="get-a-smart-meter which-meter"><span class="n">1</span> Get one</a></li>
+          <li><a href="../pages/is-my-meter-working.html" data-proto="is-my-meter-working"><span class="n">2</span> Is it working?</a></li>
+          <li><a href="../pages/energy-prices.html" data-proto="energy-prices"><span class="n">3</span> Prices</a></li>
+          <li><a href="../pages/home.html" data-proto="home switch-up"><span class="n">4</span> Homepage</a></li>
+          <li><a href="../pages/answers.html" data-proto="answers"><span class="n">5</span> Answers</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="notes-toggle" role="switch" aria-checked="false" data-notes-toggle>
+        <span class="notes-track" aria-hidden="true"><span class="notes-thumb"></span></span>
+        <span class="notes-label">Notes off</span>
+      </button>
+    </div>
+  </header>
+
+
+  <main id="main" class="flush">
+    <aside class="proposal" aria-label="About this prototype">
+      <div class="container">
+        <p class="proposal-eyebrow">Prototype 5 of 5 · Find an answer fast</p>
+        <div class="proposal-grid">
+          <div><h2>What we're proposing</h2><p>Site search that answers the question on the results page, backed by one set of answers that every page draws on. People can search, or browse by topic, and myths sit beside the facts that answer them. Each answer asks "Did this help?", so Smart Energy GB can see which answers need work and what people are searching for.</p></div>
+          <div><h2>Why</h2><p>There's no search on the main site, which has 164 pages in its sitemap. The FAQs are about 50 questions on one long page, last updated in August 2025, and the homepage tiles repeat some of the same answers separately. Myths and facts are split across two sections. Structured answers also help search engines and AI assistants give Smart Energy GB's answer rather than someone else's.</p></div>
+        </div>
+        <p class="proposal-foot">A sample of 30 answers, drafted from the live FAQs for Smart Energy GB to check.</p>
+      </div>
+    </aside>
+
+    <!-- Search (R50, R51) -->
+    <div class="page-head">
+      <div class="container">
+        <h1>Find an answer</h1>
+        <form class="search-form big" role="search" data-answers-form>
+          <label for="q" class="visually-hidden">Search questions about smart meters</label>
+          <div class="finder-field">
+            <input id="q" name="q" type="search" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="q-suggest" placeholder="Ask a question, for example: do I need Wi-Fi?">
+            <ul class="finder-list" id="q-suggest" role="listbox" aria-label="Suggested questions" hidden></ul>
+          </div>
+          <button type="submit" class="btn">Search</button>
+        </form>
+        <div class="row topic-chips" role="group" aria-label="Filter by topic" data-topic-chips></div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Suggestions appear as you type. Results show the answer itself, not just a link. Topic chips narrow the results or, with no search, let people browse. The search box also appears on the homepage and at the top of every page in the real build.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:2rem">
+      <!-- Results (R51, R52) -->
+      <section aria-labelledby="res-title">
+        <h2 class="visually-hidden" id="res-title">Answers</h2>
+        <p class="result-count" data-answers-count aria-live="polite"></p>
+        <div data-answers-list></div>
+      </section>
+
+      <!-- Myths and facts (R53) -->
+      <section aria-labelledby="myth-title" data-myths-section>
+        <h2 class="section-title" id="myth-title">Myths and facts</h2>
+        <div class="grid grid-2" data-myths></div>
+        <p class="wf-note" data-note="2"><span class="wf-note-label">CMS</span>Myths come from the same answers, marked as myths, so a fact is only ever written once.</p>
+      </section>
+
+      <!-- Still stuck (R54) -->
+      <section class="panel surface" aria-labelledby="stuck-title">
+        <h2 id="stuck-title">Can't find what you need?</h2>
+        <p>For anything about your own meter, bill or appointment, your energy supplier can help. If your meter isn't working, <a href="../pages/is-my-meter-working.html">try our checker</a>.</p>
+      </section>
+      <p class="wf-note query" data-note="3"><span class="wf-note-label">Open question</span>Would Smart Energy GB like a monthly report of top searches, searches with no answer, and answers marked "not helpful"?</p>
+    </div>
+  </main>
+
+  <!-- Prototype pager (replaces Smart Energy GB's own footer) -->
+  <footer class="proto-footer">
+    <div class="container">
+      <nav class="proto-pager" aria-label="Previous and next prototype" data-proto-pager></nav>
+      <p class="wf-meta">Prepared by ClerksWell · Prototypes for discussion · Sample data where marked</p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/wireframe.js"></script>
+  <script src="../js/prototypes.js"></script>
+</body>
+</html>

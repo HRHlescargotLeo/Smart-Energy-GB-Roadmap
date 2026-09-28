@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage — Smart Energy GB prototype</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body>
+  <!-- @@include header.html -->
+
+  <main id="main" class="flush">
+    <aside class="proposal" aria-label="About this prototype">
+      <div class="container">
+        <p class="proposal-eyebrow">Prototype 4 of 5 · A homepage that sorts people by task</p>
+        <div class="proposal-grid">
+          <div><h2>What we're proposing</h2><p>A homepage built around the three reasons people arrive: they want a smart meter, they have one and want to use it, or something isn't working. Under those sit the current campaign, a search box, up-to-date national figures and owners' stories. Each campaign gets its own landing page from a reusable template, shown here with Switch Up, Stay Smart.</p></div>
+          <div><h2>Why</h2><p>Today's homepage has six question tiles and six green modules that all look alike, with "Find out more" seven times. The newest campaign, Switch Up, Stay Smart, isn't on it at all, even though government now expects Smart Energy GB to encourage people to accept the 4G upgrade. And some pages still quote "over 60% of homes" when government figures now show 72% of meters are smart or advanced.</p></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Hero with supplier finder (R40) -->
+    <div class="home-hero">
+      <div class="container home-hero-grid">
+        <div class="home-hero-panel">
+          <h1>Get a smart meter</h1>
+          <p class="lead">See what you're using in pounds and pence, and get bills based on real readings. Installation is at no extra cost.</p>
+          <div class="finder" data-finder data-finder-link>
+            <label for="home-finder" id="home-finder-label">Who's your energy supplier?</label>
+            <div class="finder-field">
+              <input id="home-finder" type="text" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="home-finder-list" placeholder="Type your supplier's name">
+            </div>
+            <ul class="finder-list" id="home-finder-list" role="listbox" aria-labelledby="home-finder-label" hidden></ul>
+            <p class="finder-status wf-meta" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="wf-placeholder home-hero-img">Campaign photo: people at home with the in-home display in shot</div>
+      </div>
+    </div>
+    <p class="container wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Choosing a supplier opens prototype 1 at step 1 with that supplier's handover card already showing.</p>
+
+    <div class="container" style="padding-top:2.5rem">
+
+      <!-- Three doors (R41) -->
+      <section aria-labelledby="doors-title">
+        <h2 class="visually-hidden" id="doors-title">What do you need?</h2>
+        <div class="doors">
+          <a class="door" href="~/pages/get-a-smart-meter.html"><span class="door-kicker">I'd like one</span><span class="door-title">Get a smart meter</span><span class="door-text">Three steps, from finding your supplier to the day of your installation.</span></a>
+          <a class="door" href="~/pages/energy-prices.html"><span class="door-kicker">I've got one</span><span class="door-title">Make the most of it</span><span class="door-text">Prices, peak times and how to use your in-home display.</span></a>
+          <a class="door" href="~/pages/is-my-meter-working.html"><span class="door-kicker">Something's not right</span><span class="door-title">Is my smart meter working?</span><span class="door-text">A quick checker for blank displays, estimated bills and replacements.</span></a>
+        </div>
+      </section>
+
+      <!-- Search (R44) -->
+      <section class="panel surface home-search" aria-labelledby="hs-title">
+        <h2 id="hs-title">Got a question?</h2>
+        <form class="search-form" action="answers.html" method="get" role="search" data-search-go>
+          <label for="home-q" class="visually-hidden">Search questions</label>
+          <input id="home-q" name="q" type="search" placeholder="For example, do I need Wi-Fi?">
+          <button type="submit" class="btn">Search</button>
+        </form>
+        <p class="wf-meta">Popular: <a href="~/pages/answers.html?q=free">Is it free?</a> · <a href="~/pages/answers.html?q=switch%20supplier">Switching supplier</a> · <a href="~/pages/answers.html?q=renting">Renting</a></p>
+      </section>
+
+      <!-- Current campaign (R42) -->
+      <section class="campaign-band" aria-labelledby="camp-title">
+        <div class="wf-placeholder ratio-16-9">Video: Switch Up, Stay Smart campaign film</div>
+        <div class="stack">
+          <p class="eyebrow">Switch Up, Stay Smart</p>
+          <h2 id="camp-title">Your smart meter might need new kit to stay connected</h2>
+          <p>Some older smart meter equipment uses 2G and 3G networks that are being switched off. If your supplier gets in touch, say yes to the switch up. It's at no extra cost.</p>
+          <div class="row"><a class="btn" href="~/pages/switch-up.html">Find out about the switch up</a></div>
+        </div>
+      </section>
+      <p class="wf-note" data-note="2"><span class="wf-note-label">CMS</span>Editors choose which campaign leads here. Each campaign links to its own landing page built from one template (see Switch up).</p>
+
+      <!-- Figures (R43) -->
+      <section aria-labelledby="fig-title" data-figures>
+        <h2 class="section-title" id="fig-title">Smart meters in Great Britain</h2>
+        <div class="statistics" data-figures-list></div>
+        <p class="wf-meta" data-figures-source></p>
+        <p class="wf-note" data-note="3"><span class="wf-note-label">CMS</span>Figures come from one record, updated each quarter when government publishes new statistics. The date shows beside them.</p>
+      </section>
+
+      <!-- Prices teaser (R45) -->
+      <section class="panel price-teaser" aria-labelledby="pt-title" data-cap-teaser>
+        <div>
+          <h2 id="pt-title">The energy price cap</h2>
+          <p data-cap-teaser-text>Loading the latest price cap.</p>
+        </div>
+        <a class="btn btn-secondary" href="~/pages/energy-prices.html">See prices and peak times</a>
+      </section>
+
+      <!-- Stories (R46) -->
+      <section aria-labelledby="stories-title">
+        <h2 class="section-title" id="stories-title">What smart meter owners say</h2>
+        <div class="carousel" data-autoplay="0">
+          <div class="carousel-track">
+            <div class="carousel-item story"><blockquote><p>"Best thing I ever installed was my smart meter. At 71, I don't have to climb a step ladder to read the meter and send readings."</p><footer>Joy · <span class="badge">[Situation, e.g. lives alone]</span></footer></blockquote><div class="wf-placeholder ratio-4-3">Photo, with permission</div></div>
+            <div class="carousel-item story"><blockquote><p>"My smart meter has helped me access cheaper energy rates; now I charge the car and run the washing machine for less."</p><footer>Alan · <span class="badge">[Situation, e.g. time-of-use tariff]</span></footer></blockquote><div class="wf-placeholder ratio-4-3">Photo, with permission</div></div>
+            <div class="carousel-item story"><blockquote><p>"I've got smart meters at home and in businesses. No more estimated bills, just pay for what I use! It's a great system."</p><footer>Billy · <span class="badge">[Situation, e.g. small business owner]</span></footer></blockquote><div class="wf-placeholder ratio-4-3">Photo, with permission</div></div>
+          </div>
+          <div class="carousel-controls"><button type="button" class="carousel-arrow" data-dir="prev" aria-label="Previous story">&#8249;</button><button type="button" class="carousel-arrow" data-dir="next" aria-label="Next story">&#8250;</button></div>
+          <div class="carousel-indicators"></div>
+        </div>
+        <p class="wf-note" data-note="4"><span class="wf-note-label">Content</span>Quotes are from the live homepage. We'd add each person's situation so visitors can find someone like them.</p>
+      </section>
+
+      <!-- Other campaigns, with labels that say where they go (R47) -->
+      <section aria-labelledby="more-title">
+        <h2 class="section-title" id="more-title">Watch and learn</h2>
+        <div class="grid grid-3">
+          <div class="card"><div class="wf-placeholder ratio-16-9">Photo: Einstein energy tips</div><h3 class="card-title">Energy saving tips</h3><p class="card-text">Simple changes around the home, and what they could save.</p><a class="card-link" href="#">See this season's tips</a></div>
+          <div class="card"><div class="wf-placeholder ratio-16-9">Photo: Johnny Vegas installation</div><h3 class="card-title">What happens at an installation</h3><p class="card-text">Follow an installation from knock on the door to first reading.</p><a class="card-link" href="#">Watch Johnny's installation</a></div>
+          <div class="card"><div class="wf-placeholder ratio-16-9">Photo: prepay smart meter</div><h3 class="card-title">Prepay smart meters</h3><p class="card-text">Top up online and see your balance at a glance.</p><a class="card-link" href="#">How prepay smart meters work</a></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+  <script src="~/js/data.js"></script>
+  <script src="~/js/wireframe.js"></script>
+  <script src="~/js/prototypes.js"></script>
+</body>
+</html>

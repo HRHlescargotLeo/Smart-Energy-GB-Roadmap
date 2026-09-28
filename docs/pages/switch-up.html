@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch Up, Stay Smart — Smart Energy GB prototype</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Prototype navigator (replaces Smart Energy GB's own header, R01) -->
+  <header class="sticky site-header proto-nav">
+    <div class="container proto-nav-row">
+      <a class="proto-home" href="../index.html" aria-label="Smart Energy GB prototypes, overview">Smart Energy GB <span>prototypes</span></a>
+      <nav aria-label="Prototypes">
+        <ul class="proto-links">
+          <li><a href="../index.html" data-proto="index">Overview</a></li>
+          <li><a href="../pages/get-a-smart-meter.html" data-proto="get-a-smart-meter which-meter"><span class="n">1</span> Get one</a></li>
+          <li><a href="../pages/is-my-meter-working.html" data-proto="is-my-meter-working"><span class="n">2</span> Is it working?</a></li>
+          <li><a href="../pages/energy-prices.html" data-proto="energy-prices"><span class="n">3</span> Prices</a></li>
+          <li><a href="../pages/home.html" data-proto="home switch-up"><span class="n">4</span> Homepage</a></li>
+          <li><a href="../pages/answers.html" data-proto="answers"><span class="n">5</span> Answers</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="notes-toggle" role="switch" aria-checked="false" data-notes-toggle>
+        <span class="notes-track" aria-hidden="true"><span class="notes-thumb"></span></span>
+        <span class="notes-label">Notes off</span>
+      </button>
+    </div>
+  </header>
+
+
+  <main id="main" class="flush">
+    <aside class="proposal" aria-label="About this page">
+      <div class="container">
+        <p class="proposal-eyebrow">Prototype 4 of 5 · Campaign landing template, shown with Switch Up, Stay Smart</p>
+        <div class="proposal-grid">
+          <div><h2>What we're proposing</h2><p>One template for every campaign: a film or hero image, one message, one action, a short "what happens" sequence, answers to the questions the campaign raises, and a link to the press materials. New campaigns launch by filling in the template rather than building a page.</p></div>
+          <div><h2>Why</h2><p>Campaigns (Einstein, Johnny Vegas, Ross Kemp) currently live as homepage blocks that lead to ordinary content pages. The Switch Up, Stay Smart page was updated on 8 September 2026 but isn't linked from the homepage, the About smart meters section, the FAQs or Get a smart meter, and isn't in the sitemap, so people who get a letter from their supplier and search for it have little chance of finding it.</p></div>
+        </div>
+        <p class="proposal-foot">Copy is adapted from the live Switch Up, Stay Smart page.</p>
+      </div>
+    </aside>
+
+    <!-- Campaign hero (R48) -->
+    <div class="campaign-hero">
+      <div class="container campaign-hero-grid">
+        <div class="stack">
+          <p class="eyebrow">Switch Up, Stay Smart</p>
+          <h1>All technology evolves. Smart meters too.</h1>
+          <p class="lead">Energy suppliers across Great Britain are switching older smart meter equipment for new kit, so your meter stays connected. There's nothing you need to do until your supplier gets in touch.</p>
+        </div>
+        <div class="wf-placeholder ratio-16-9">Video: campaign film, with captions and transcript</div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:2.5rem">
+
+      <!-- One question, one action (R48) -->
+      <section class="panel surface" aria-labelledby="contact-title" data-switchup>
+        <h2 id="contact-title">Has your energy supplier been in touch about a switch up?</h2>
+        <div class="seg" role="radiogroup" aria-label="Has your supplier been in touch?">
+          <button type="button" role="radio" aria-checked="false" data-su="yes">Yes</button>
+          <button type="button" role="radio" aria-checked="false" data-su="no">No</button>
+          <button type="button" role="radio" aria-checked="false" data-su="unsure">I'm not sure</button>
+        </div>
+        <div class="su-answer" data-su-answer aria-live="polite"></div>
+      </section>
+
+      <!-- What happens (R48) -->
+      <section aria-labelledby="what-title">
+        <h2 class="section-title" id="what-title">What happens</h2>
+        <ol class="steps steps-compact">
+          <li class="step"><div class="step-num" aria-hidden="true">1</div><div class="step-body"><h3>Your supplier contacts you</h3><p>They'll explain what needs switching: usually the communications hub, and sometimes the meter itself if it's an older model.</p></div></li>
+          <li class="step"><div class="step-num" aria-hidden="true">2</div><div class="step-body"><h3>You book a time</h3><p>They arrange an appointment that suits you. There's no charge.</p></div></li>
+          <li class="step"><div class="step-num" aria-hidden="true">3</div><div class="step-body"><h3>You stay smart</h3><p>Automatic readings, accurate bills and access to flexible tariffs carry on as before.</p></div></li>
+        </ol>
+      </section>
+
+      <!-- Questions (R48) -->
+      <section aria-labelledby="suq-title">
+        <h2 class="section-title" id="suq-title">Questions about the switch up</h2>
+        <div class="accordion">
+          <div class="accordion-item open"><button type="button" class="accordion-title">My smart meter works fine. Why switch it?<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>It may work today, but some older smart meter equipment relies on 2G and 3G mobile networks that are being retired. Switching now keeps it connected. Think of it like the move from analogue to digital TV.</p></div></div>
+          <div class="accordion-item"><button type="button" class="accordion-title">Will it cost me anything?<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>No. The switch up is at no extra cost to you.</p></div></div>
+          <div class="accordion-item"><button type="button" class="accordion-title">What if I say no?<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>[Draft for Smart Energy GB: what happens to readings and bills if the equipment isn't replaced before the network it uses is switched off.]</p></div></div>
+          <div class="accordion-item"><button type="button" class="accordion-title">How do I know the call or letter is really from my supplier?<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>[Draft for Smart Energy GB: how to check, and to call the number on your bill rather than one in a message.]</p></div></div>
+        </div>
+        <p class="wf-note query" data-note="1"><span class="wf-note-label">Open question</span>Two answers need Smart Energy GB's wording: what happens if someone refuses, and how to spot a scam. Both are likely questions once suppliers start writing to people.</p>
+      </section>
+
+      <!-- Press and share (R48) -->
+      <section class="row between panel" aria-label="Press and sharing">
+        <p style="margin:0"><strong>For press and partners:</strong> campaign film, images and briefing pack.</p>
+        <div class="row"><a class="btn btn-secondary" href="#">Press materials</a><button type="button" class="btn btn-secondary" data-copy-link>Copy link to this page</button></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Prototype pager (replaces Smart Energy GB's own footer) -->
+  <footer class="proto-footer">
+    <div class="container">
+      <nav class="proto-pager" aria-label="Previous and next prototype" data-proto-pager></nav>
+      <p class="wf-meta">Prepared by ClerksWell · Prototypes for discussion · Sample data where marked</p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/wireframe.js"></script>
+  <script src="../js/prototypes.js"></script>
+</body>
+</html>

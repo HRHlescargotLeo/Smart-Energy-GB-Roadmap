@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is my smart meter working? — Smart Energy GB prototype</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body>
+  <!-- @@include header.html -->
+
+  <main id="main" class="flush">
+    <aside class="proposal" aria-label="About this prototype">
+      <div class="container">
+        <p class="proposal-eyebrow">Prototype 2 of 5 · Is my smart meter working?</p>
+        <div class="proposal-grid">
+          <div><h2>What we're proposing</h2><p>Replace the long troubleshooting page with a short guided checker. It asks two or three questions and ends in one clear answer: something to try, a reason not to worry, or who to contact and what to say. The same checker covers the 4G switch up and old radio teleswitch meters, and the page explains what to expect in the first weeks after installation.</p></div>
+          <div><h2>Why</h2><p>Government figures show 3.1 million smart meters working in traditional mode at the end of June 2026, and helping people get these working again is now part of Smart Energy GB's remit. Today the troubleshooting page runs to about 1,600 words and repeats the heading "My smart meter is not working". The RTS page still talks about the switch-off as something that will happen, and the new Switch Up, Stay Smart page isn't linked from here at all.</p></div>
+        </div>
+        <p class="proposal-foot">Answers are drafted from the live FAQs and troubleshooting page, for Smart Energy GB to check.</p>
+      </div>
+    </aside>
+
+    <!-- Intro (R20) -->
+    <div class="page-head">
+      <div class="container">
+        <h1>Is my smart meter working?</h1>
+        <p class="lead">Answer a few questions and we'll tell you what's going on and what to do next. It takes about a minute.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:2rem">
+      <!-- Guided checker (R20–R23) -->
+      <section class="checker" id="checker" aria-labelledby="checker-title" data-checker>
+        <h2 class="visually-hidden" id="checker-title">Smart meter checker</h2>
+        <div class="checker-top">
+          <ol class="checker-trail" data-checker-trail aria-label="Your answers"></ol>
+          <button type="button" class="btn-link" data-checker-restart hidden>Start again</button>
+        </div>
+        <div class="checker-stage" data-checker-stage tabindex="-1"></div>
+      </section>
+      <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Each answer moves to the next question; "Start again" and the answer trail let people step back. Every route ends in a result with the supplier's contact details. Try "My supplier wants to replace my meter" or "My heating comes on at the wrong times".</p>
+      <p class="wf-note query" data-note="2"><span class="wf-note-label">Open question</span>Could suppliers give Smart Energy GB a direct contact route for smart meter faults, so the result can show the right number instead of a general helpline?</p>
+
+      <!-- First weeks (R24) -->
+      <section id="first-weeks" aria-labelledby="fw-title">
+        <h2 class="section-title" id="fw-title">The first weeks after your installation</h2>
+        <ol class="timeline">
+          <li><span class="tl-when">Day 1</span><h3>Your meters are fitted</h3><p>The installer sets up your in-home display and shows you how it works. Your display should start showing what you're using straight away.</p></li>
+          <li><span class="tl-when">First two weeks</span><h3>Your supplier connects</h3><p>It can take a couple of weeks for your supplier to start getting readings. If they ask you for a reading during this time, you can send one or wait.</p></li>
+          <li><span class="tl-when">First bill</span><h3>Accurate readings</h3><p>Once connected, your bills use automatic readings, not estimates.</p></li>
+          <li><span class="tl-when">After a month</span><h3>Still estimated?</h3><p>If bills are still estimated after a month, <a href="#checker" data-checker-jump="estimated">run the checker</a> or contact your supplier.</p></li>
+        </ol>
+      </section>
+
+      <!-- Switch up (R22) -->
+      <section class="panel surface callout-band" aria-labelledby="su-title">
+        <div>
+          <p class="eyebrow">Switch Up, Stay Smart</p>
+          <h2 id="su-title">Has your supplier asked to replace your smart meter?</h2>
+          <p>Some older smart meter equipment uses 2G and 3G mobile networks, which are being switched off. Your supplier will contact you to replace it, at no extra cost, so your meter keeps working.</p>
+        </div>
+        <a class="btn" href="~/pages/switch-up.html">Find out about the switch up</a>
+      </section>
+
+      <!-- Display help by model (R25) -->
+      <section aria-labelledby="ihd-title">
+        <h2 class="section-title" id="ihd-title">Help with your in-home display</h2>
+        <p>Displays look different depending on who fitted them. Choose the one that looks like yours.</p>
+        <div class="tabs" role="tablist" aria-label="Display types">
+          <button type="button" class="tab active" data-tab="ihd-a" aria-selected="true">Display type A</button>
+          <button type="button" class="tab" data-tab="ihd-b" aria-selected="false">Display type B</button>
+          <button type="button" class="tab" data-tab="ihd-c" aria-selected="false">Prepay display</button>
+        </div>
+        <div>
+          <div class="tab-panel active" id="ihd-a"><div class="split"><div class="wf-placeholder ratio-4-3">Photo: display type A, screens labelled</div><div class="stack"><h3>Reading the screens</h3><p>What each screen shows, the traffic-light colours and how to change between pounds and kWh.</p><h3>If it's blank</h3><p>Plug it in near your meter and restart it. [Model-specific reset steps, from the manufacturer.]</p></div></div></div>
+          <div class="tab-panel" id="ihd-b"><div class="split"><div class="wf-placeholder ratio-4-3">Photo: display type B, screens labelled</div><div class="stack"><h3>Reading the screens</h3><p>Same content, laid out for this model.</p><h3>If it's blank</h3><p>Model-specific reset steps.</p></div></div></div>
+          <div class="tab-panel" id="ihd-c"><div class="split"><div class="wf-placeholder ratio-4-3">Photo: prepay display, balance screen</div><div class="stack"><h3>Checking your balance</h3><p>Where to find your credit, emergency credit and debt screens.</p><h3>If it's blank</h3><p>Your balance is also shown on the meter itself and in your supplier's app.</p></div></div></div>
+        </div>
+        <p class="wf-note query" data-note="3"><span class="wf-note-label">Open question</span>Which display models cover most homes? Model names and reset steps would come from suppliers or manufacturers.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+  <script src="~/js/data.js"></script>
+  <script src="~/js/wireframe.js"></script>
+  <script src="~/js/prototypes.js"></script>
+</body>
+</html>
