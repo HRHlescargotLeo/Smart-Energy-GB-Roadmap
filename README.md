@@ -1,8 +1,13 @@
-# Smart Energy GB — website improvement prototypes (V1)
+# Smart Energy GB — website improvement prototypes (V2)
 
-Five clickable greyscale prototypes for improvements to smartenergygb.org, prepared by ClerksWell
-following the phase 1 review (28 September 2026). The structure is agreed first; the Smart Energy GB
-design layer will go in `src/css/theme.css` only, so removing that file always returns the greyscale version.
+Five clickable prototypes for improvements to smartenergygb.org, prepared by ClerksWell following the
+phase 1 review (28 September 2026). The Smart Energy GB design layer (colours, Hind type, buttons, panels,
+imagery treatment) lives entirely in `src/css/theme.css`; remove that file to get the greyscale prototypes back.
+
+Photography is Smart Energy GB's own, loaded directly from smartenergygb.org by `src/js/photos.js` (the
+mapping of images to placeholders lives there). Where the images can't load, illustrated placeholders in the
+brand green show instead. Photography © Smart Energy GB; the repository and site are public, so treat them
+accordingly. Photos beside named owners' quotes are deliberately left as placeholders.
 
 ## View
 Live: https://hrhlescargotleo.github.io/Smart-Energy-GB-Roadmap/
@@ -29,9 +34,9 @@ Edit files in `src/`; `docs/` is generated (commit it, as GitHub Pages serves it
 navigator (top bar with the Notes switch) and the previous/next footer live in `src/includes/`.
 
 Shared data lives in `src/js/data.js`: suppliers, the price cap record (Ofgem, July to December 2026),
-DESNZ smart meter figures (end June 2026) and 30 sample answers drafted from the live FAQs.
+DESNZ smart meter figures (end June 2026) and 29 sample answers drafted from the live FAQs.
 Generic behaviour is in `src/js/wireframe.js`; prototype behaviour in `src/js/prototypes.js`.
 
 ## Status
-V1, greyscale prototypes for internal review. Notes are off by default; switch "Notes on" in the top bar
+V2, designed prototypes for internal review. Smart Energy GB's own header and footer are replaced by a prototype navigator. Notes are off by default; switch "Notes on" in the top bar
 to show what each prototype proposes and why, plus in-page annotations.
