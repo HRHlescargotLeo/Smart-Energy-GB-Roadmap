@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy prices — Smart Energy GB prototype</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body>
+  <!-- @@include header.html -->
+
+  <main id="main" class="flush">
+    <aside class="proposal" aria-label="About this prototype">
+      <div class="container">
+        <p class="proposal-eyebrow">Prototype 3 of 5 · Energy prices, always current</p>
+        <div class="proposal-grid">
+          <div><h2>What we're proposing</h2><p>Hold the price cap, unit rates and dates in one record in the CMS and have every page read from it. The page then moves from "current" to "upcoming" on the day the cap changes, without anyone editing it. Alongside it: a simpler bill estimator that uses the same figures, and a clock that shows peak and off-peak times at a glance.</p></div>
+          <div><h2>Why</h2><p>Price cap content is some of the most searched-for on the site, and it changes every three months. On the live page the July to September cap appears as £1,862 in the text and £1,663 in the table (Ofgem's figure is £1,663), and the footnote uses older typical-use figures than Ofgem's current ones. When the same number is typed into several places, one of them will eventually be wrong.</p></div>
+        </div>
+        <p class="proposal-foot">Cap figures are Ofgem's for July to December 2026, to be checked before any real use. Estimator presets other than "typical" are illustrative.</p>
+      </div>
+    </aside>
+
+    <!-- Intro (R30) -->
+    <div class="page-head">
+      <div class="container">
+        <h1>Energy prices and the price cap</h1>
+        <p class="lead">What the energy price cap is now, when it's changing, and what that could mean for your bills.</p>
+        <div class="preview-date">
+          <label for="preview-date">Preview this page as it would look on</label>
+          <select id="preview-date" data-preview-date>
+            <option value="2026-09-28">28 September 2026 (today)</option>
+            <option value="2026-10-01">1 October 2026, before the next cap is announced</option>
+          </select>
+        </div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Prototype only</span>The date control isn't part of the design. It shows how the page switches itself over when a new cap starts, and what it says when Ofgem hasn't announced the next one yet.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:2rem">
+
+      <!-- Price cap module (R30, R31) -->
+      <section aria-labelledby="cap-title" data-cap>
+        <h2 class="section-title" id="cap-title">The price cap now</h2>
+        <div class="cap-grid">
+          <div class="panel cap-now">
+            <p class="eyebrow" data-cap-now-label>Current price cap</p>
+            <p class="cap-figure"><span data-cap-now-typical>£0</span><small> a year</small></p>
+            <p data-cap-now-change class="muted"></p>
+            <p class="wf-meta" data-cap-use></p>
+          </div>
+          <div class="panel surface cap-next" data-cap-next></div>
+        </div>
+        <div class="tbl-scroll">
+          <table class="rates">
+            <caption class="visually-hidden">Unit rates and standing charges</caption>
+            <thead><tr><th scope="col">Direct debit, typical, incl. VAT</th><th scope="col" data-cap-col-now>Now</th><th scope="col" data-cap-col-next>From next change</th></tr></thead>
+            <tbody data-cap-rates></tbody>
+          </table>
+        </div>
+        <div class="panel surface reading-tip" data-reading-tip hidden></div>
+        <p class="wf-meta">Source: Ofgem. The cap limits unit rates and standing charges, not your total bill: what you pay depends on how much you use.</p>
+        <p class="wf-note" data-note="2"><span class="wf-note-label">Behaviour</span>Every figure on this page, on the homepage and in the answers comes from one price record. When the cap changes, the "upcoming" figures become "current" automatically. Three days before a change, people without a smart meter are reminded to send a reading.</p>
+      </section>
+
+      <!-- Bill estimator (R33) -->
+      <section aria-labelledby="est-title" data-estimator>
+        <h2 class="section-title" id="est-title">Estimate your bill</h2>
+        <div class="split">
+          <form class="stack" id="est-form" onsubmit="return false">
+            <fieldset>
+              <legend>How much energy does your home use?</legend>
+              <div class="seg" role="radiogroup" aria-label="Household size">
+                <button type="button" role="radio" aria-checked="false" data-preset="low">Low</button>
+                <button type="button" role="radio" aria-checked="true" data-preset="typical">Typical</button>
+                <button type="button" role="radio" aria-checked="false" data-preset="high">High</button>
+              </div>
+              <p class="field-hint">Your annual use is on your bill. Use it below if you have it.</p>
+            </fieldset>
+            <div class="field">
+              <label for="est-elec">Electricity a year: <span class="num" data-est-elec-out>2,500</span> kWh</label>
+              <input id="est-elec" type="range" min="500" max="8000" step="100" value="2500">
+            </div>
+            <div class="field">
+              <label for="est-gas">Gas a year: <span class="num" data-est-gas-out>9,500</span> kWh</label>
+              <input id="est-gas" type="range" min="0" max="25000" step="500" value="9500">
+            </div>
+            <label class="check"><input id="est-nogas" type="checkbox"> My home doesn't have gas</label>
+          </form>
+          <div class="panel est-out" aria-live="polite">
+            <p class="eyebrow" data-est-period>Under the current cap</p>
+            <p class="cap-figure"><span data-est-month>£0</span><small> a month</small></p>
+            <dl class="kv">
+              <dt>Electricity used</dt><dd data-est-e-unit>£0</dd>
+              <dt>Electricity standing charge</dt><dd data-est-e-sc>£0</dd>
+              <dt>Gas used</dt><dd data-est-g-unit>£0</dd>
+              <dt>Gas standing charge</dt><dd data-est-g-sc>£0</dd>
+              <dt>A year</dt><dd data-est-year>£0</dd>
+            </dl>
+            <p class="wf-meta" data-est-next></p>
+          </div>
+        </div>
+        <p class="wf-note" data-note="3"><span class="wf-note-label">Behaviour</span>Replaces the appliance calculator's 36 arrow-key inputs with two sliders and three starting points. Uses the same price record, so it shows the current cap and the next one.</p>
+      </section>
+
+      <!-- Peak times clock (R32) -->
+      <section aria-labelledby="peak-title" data-peak>
+        <h2 class="section-title" id="peak-title">When is electricity in most demand?</h2>
+        <div class="split">
+          <div class="peak-wrap">
+            <div class="seg" role="radiogroup" aria-label="Day of the week">
+              <button type="button" role="radio" aria-checked="true" data-day="weekday">Monday to Friday</button>
+              <button type="button" role="radio" aria-checked="false" data-day="weekend">Weekend</button>
+            </div>
+            <div class="peak-clock" data-peak-clock role="img" aria-label="24-hour clock showing peak times"></div>
+            <p class="peak-key"><span class="key key-peak"></span> Peak <span class="key key-off"></span> Off-peak</p>
+          </div>
+          <div class="stack">
+            <p class="peak-headline" data-peak-headline>Peak time is 4pm to 7pm on weekdays.</p>
+            <p>Using less electricity at peak times helps the grid, and on a time-of-use tariff it can cost you less. Your in-home display shows what you're using right now.</p>
+            <h3>What could I move?</h3>
+            <div class="row" data-peak-appliances>
+              <button type="button" class="chip" aria-pressed="false" data-appliance="Washing machine">Washing machine</button>
+              <button type="button" class="chip" aria-pressed="false" data-appliance="Dishwasher">Dishwasher</button>
+              <button type="button" class="chip" aria-pressed="false" data-appliance="Tumble dryer">Tumble dryer</button>
+              <button type="button" class="chip" aria-pressed="false" data-appliance="Electric car">Electric car</button>
+            </div>
+            <p class="muted" data-peak-advice aria-live="polite">Choose an appliance to see when to run it.</p>
+            <p><a href="~/pages/answers.html?q=time%20of%20use">What is a time-of-use tariff?</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Flexibility schemes (R34) -->
+      <section aria-labelledby="flex-title">
+        <h2 class="section-title" id="flex-title">Get rewarded for using energy flexibly</h2>
+        <div class="grid grid-3">
+          <div class="card"><span class="badge">Sample</span><h3 class="card-title">[Scheme name]</h3><p class="card-text">[What it asks you to do, and what you get in return.]</p><p class="wf-meta">Open to: [which suppliers' customers] · Reviewed [date]</p></div>
+          <div class="card"><span class="badge">Sample</span><h3 class="card-title">Time-of-use tariffs</h3><p class="card-text">Cheaper electricity at quieter times, if you can move when you use it. Ask your supplier what they offer.</p><p class="wf-meta">Reviewed [date]</p></div>
+          <div class="card"><span class="badge">Sample</span><h3 class="card-title">[Scheme name]</h3><p class="card-text">[Short description.]</p><p class="wf-meta">Open to: [which suppliers' customers] · Reviewed [date]</p></div>
+        </div>
+        <p class="wf-note query" data-note="4"><span class="wf-note-label">Open question</span>The live Demand Flexibility Service page lists suppliers taking part "this year". Who confirms that list each season? Holding it as data with a review date would stop it going stale.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+  <script src="~/js/data.js"></script>
+  <script src="~/js/wireframe.js"></script>
+  <script src="~/js/prototypes.js"></script>
+  <script src="~/js/photos.js"></script>
+</body>
+</html>

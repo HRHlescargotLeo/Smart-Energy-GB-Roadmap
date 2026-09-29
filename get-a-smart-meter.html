@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a smart meter — Smart Energy GB prototype</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body>
+  <!-- @@include header.html -->
+
+  <main id="main" class="flush">
+    <!-- What we're proposing and why (shown when Notes are on) -->
+    <aside class="proposal" aria-label="About this prototype">
+      <div class="container">
+        <p class="proposal-eyebrow">Prototype 1 of 5 · Get a smart meter</p>
+        <div class="proposal-grid">
+          <div><h2>What we're proposing</h2><p>One page that takes people from "I'd like a smart meter" to a booked installation in three clear steps. The supplier finder stays at the heart of it, but with a tidied list, a short "here's what happens next" before we hand people over to their supplier, a get-ready checklist, and a way to be reminded later for anyone who isn't ready to book today.</p></div>
+          <div><h2>Why</h2><p>Getting a first installation is still Smart Energy GB's main job to 2030. Today the Get a smart meter page has around 150 words and six links to other topics, and the actual steps sit on a separate page. The finder itself is well built, but some names lead nowhere: GnErgy goes to bulb.co.uk, which is now a parked domain, and five others go to a Shell Energy page even though the same list says Shell customers are now with Octopus. People who aren't ready to book simply leave, and Smart Energy GB has no way to come back to them.</p></div>
+        </div>
+        <p class="proposal-foot">Supplier list is a sample. Links to suppliers are placeholders.</p>
+      </div>
+    </aside>
+
+    <!-- Intro (R10) -->
+    <div class="page-head">
+      <div class="container">
+        <h1>Get a smart meter</h1>
+        <p class="lead">Households and small businesses in England, Scotland and Wales can get a smart meter at no extra cost. It takes three steps, and the installation itself usually takes about two hours.</p>
+        <div class="seg" role="radiogroup" aria-label="Who is the smart meter for?" data-finder-mode>
+          <button type="button" role="radio" aria-checked="true" data-mode="home">For my home</button>
+          <button type="button" role="radio" aria-checked="false" data-mode="business">For my small business</button>
+        </div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Switching to "small business" swaps the supplier list in step 1 for business suppliers and adjusts the wording. It replaces the separate business subdomain as the starting point (idea #7).</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:2.5rem">
+
+      <!-- Three steps (R11) -->
+      <ol class="steps" aria-label="Three steps to a smart meter">
+
+        <!-- Step 1: find your supplier (R12, R13) -->
+        <li class="step" id="step-1">
+          <div class="step-num" aria-hidden="true">1</div>
+          <div class="step-body">
+            <h2>Find your energy supplier</h2>
+            <p>Your energy supplier installs your smart meter. Type their name and we'll take you to the right place to book.</p>
+
+            <div class="finder" data-finder>
+              <label for="finder-input" id="finder-label" data-finder-label>Who supplies your home's energy?</label>
+              <div class="finder-field">
+                <input id="finder-input" type="text" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="finder-list" placeholder="Type your supplier's name">
+              </div>
+              <ul class="finder-list" id="finder-list" role="listbox" aria-labelledby="finder-label" hidden></ul>
+              <p class="finder-status wf-meta" role="status" aria-live="polite"></p>
+
+              <!-- Handover card (R13) -->
+              <div class="handover panel surface" data-handover hidden tabindex="-1">
+                <p class="handover-moved" data-handover-moved hidden></p>
+                <h3>You're going to <span data-handover-name>your supplier</span></h3>
+                <p>You'll book on their website. Have these ready:</p>
+                <ul class="ticks">
+                  <li>Your account number (it's on your bill or in their app)</li>
+                  <li>Two or three dates that suit you</li>
+                  <li>Where your meters are, and anything that makes them hard to reach</li>
+                </ul>
+                <div class="row">
+                  <a class="btn" href="#" data-handover-go>Continue to <span data-handover-name>supplier</span></a>
+                  <button type="button" class="btn btn-secondary" data-modal-open="remind-modal">Remind me later</button>
+                  <button type="button" class="btn-link" data-finder-reset>Choose a different supplier</button>
+                </div>
+              </div>
+            </div>
+            <p class="wf-note" data-note="2"><span class="wf-note-label">Behaviour</span>Try "bulb", "shel" or "octupus". Former suppliers go straight to the supplier that now looks after their customers, with a one-line explanation, so there are no chains of redirects or dead links. Arrow keys move through the list; Enter chooses; Escape closes.</p>
+            <p class="wf-note query" data-note="3"><span class="wf-note-label">Open question</span>Who keeps the supplier list up to date today? We'd suggest a named owner, a review date and an automatic weekly check that every link still works.</p>
+
+            <div class="accordion">
+              <div class="accordion-item"><button type="button" class="accordion-title">I'm not sure who my supplier is<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>Your supplier's name is on your energy bill, in emails from them and in their app. If you've just moved in and don't know, the Find my supplier service can tell you from your address.</p></div></div>
+              <div class="accordion-item"><button type="button" class="accordion-title">I might already have a smart meter<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>Compare your meter with the common types and we'll tell you what it means. <a href="~/pages/which-meter.html">Check which meter you have</a></p></div></div>
+              <div class="accordion-item"><button type="button" class="accordion-title">My gas and electricity come from different suppliers<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>Contact both. If you can, have your electricity smart meter installed first, because your gas meter connects to the network through it.</p></div></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Step 2: book a date (R14) -->
+        <li class="step" id="step-2">
+          <div class="step-num" aria-hidden="true">2</div>
+          <div class="step-body">
+            <h2>Book a date with your supplier</h2>
+            <p>Your supplier will offer you an appointment. Things worth knowing when you book:</p>
+            <div class="grid grid-3">
+              <div class="card"><h3 class="card-title">About two hours</h3><p class="card-text">For gas and electricity together. Your supply is off for a short time while the meter is changed.</p></div>
+              <div class="card"><h3 class="card-title">No extra cost</h3><p class="card-text">There's no charge for the installation or the in-home display, and no extra charge on your bill.</p></div>
+              <div class="card"><h3 class="card-title">Tell them what you need</h3><p class="card-text">If you need extra help, an accessible display or a particular time, say so when you book.</p></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Step 3: on the day (R15) -->
+        <li class="step" id="step-3">
+          <div class="step-num" aria-hidden="true">3</div>
+          <div class="step-body">
+            <h2>Let the installer in</h2>
+            <p>A trained installer from your supplier fits the meters and sets up your in-home display.</p>
+            <div class="checklist panel">
+              <div class="row between"><h3>Get-ready checklist</h3><button type="button" class="btn btn-sm btn-secondary" data-copy-checklist>Copy checklist</button></div>
+              <ul class="ticks" id="checklist-items">
+                <li>Clear a path to your gas and electricity meters</li>
+                <li>Be at home for about two hours</li>
+                <li>Ask to see the installer's ID before letting them in</li>
+                <li>Ask them to show you how the in-home display works</li>
+                <li>Keep the display somewhere you'll see it, such as the kitchen</li>
+              </ul>
+            </div>
+            <p class="muted" style="margin-top:1rem">After the installation, it can take a few weeks for your supplier to start getting readings. <a href="~/pages/is-my-meter-working.html#first-weeks">What happens in the first weeks</a></p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- Remind me later (R16) -->
+      <section class="panel surface remind-band" aria-labelledby="remind-title">
+        <div>
+          <h2 id="remind-title">Not ready to book yet?</h2>
+          <p>We'll send you a reminder when it suits you, with a link straight to your supplier.</p>
+        </div>
+        <button type="button" class="btn" data-modal-open="remind-modal">Remind me later</button>
+      </section>
+      <p class="wf-note query" data-note="4"><span class="wf-note-label">Open question</span>Would Smart Energy GB hold its own reminder list? It gives the campaign a way back to people who were interested but not ready, and needs a privacy notice and consent wording.</p>
+    </div>
+
+    <!-- Remind me modal (R16) -->
+    <div class="wf-modal" id="remind-modal" role="dialog" aria-modal="true" aria-labelledby="remind-modal-title">
+      <div class="wf-modal-panel">
+        <button type="button" class="wf-modal-close" aria-label="Close">&times;</button>
+        <form id="remind-form" novalidate>
+          <h2 id="remind-modal-title">Remind me later</h2>
+          <p class="muted">We'll email you once. You won't be added to anything else.</p>
+          <div class="field">
+            <label for="remind-email">Email address</label>
+            <input id="remind-email" type="email" required autocomplete="email">
+            <p class="field-error" hidden>Enter an email address, like name@example.com</p>
+          </div>
+          <div class="field">
+            <label for="remind-when">When should we remind you?</label>
+            <select id="remind-when" required>
+              <option value="">Choose a time</option>
+              <option>In 2 weeks</option>
+              <option>In a month</option>
+              <option>In 3 months</option>
+            </select>
+            <p class="field-error" hidden>Choose when you'd like the reminder</p>
+          </div>
+          <div class="field">
+            <label class="check"><input id="remind-consent" type="checkbox" required> I agree to Smart Energy GB emailing me this reminder</label>
+            <p class="field-error" hidden>Tick the box so we can send your reminder</p>
+          </div>
+          <button type="submit" class="btn">Set reminder</button>
+        </form>
+        <div id="remind-done" hidden>
+          <h2 tabindex="-1">Reminder set</h2>
+          <p>We'll email <strong data-remind-email>you</strong> <span data-remind-when>later</span> with a link to <span data-handover-name>your supplier</span>.</p>
+          <button type="button" class="btn wf-modal-close">Close</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+  <script src="~/js/data.js"></script>
+  <script src="~/js/wireframe.js"></script>
+  <script src="~/js/prototypes.js"></script>
+  <script src="~/js/photos.js"></script>
+</body>
+</html>

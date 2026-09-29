@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Which meter do I have? — Smart Energy GB prototype</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body>
+  <!-- @@include header.html -->
+
+  <main id="main" class="flush">
+    <aside class="proposal" aria-label="About this page">
+      <div class="container">
+        <p class="proposal-eyebrow">Prototype 1 of 5 · Which meter do I have?</p>
+        <div class="proposal-grid">
+          <div><h2>What we're proposing</h2><p>A picture-based checker. People pick the meter that looks like theirs and get a plain answer and the right next step, whether that's booking a smart meter, expecting a switch up or replacing an old radio teleswitch meter.</p></div>
+          <div><h2>Why</h2><p>The live guide links to "Not sure if you already have a smart meter? We can help", which leads to a page of text. People recognise their meter by how it looks, not by its name.</p></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Intro (R17) -->
+    <div class="page-head">
+      <div class="container">
+        <p class="wf-meta"><a href="~/pages/get-a-smart-meter.html">Get a smart meter</a> ›</p>
+        <h1>Which meter do I have?</h1>
+        <p class="lead">Choose the one that looks most like yours. If you have separate gas and electricity meters, start with electricity.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:2rem">
+      <!-- Meter picker (R17) -->
+      <div class="meter-grid" role="radiogroup" aria-label="Meter types" data-meter-picker>
+        <button type="button" class="meter-opt" role="radio" aria-checked="false" data-meter="smart"><span class="wf-placeholder ratio-4-3">Photo: smart meter with in-home display</span><span class="meter-name">Smart meter</span><span class="wf-meta">Digital screen, came with a portable display</span></button>
+        <button type="button" class="meter-opt" role="radio" aria-checked="false" data-meter="older"><span class="wf-placeholder ratio-4-3">Photo: first-generation smart meter</span><span class="meter-name">Older smart meter</span><span class="wf-meta">Fitted some years ago, may have a separate hub</span></button>
+        <button type="button" class="meter-opt" role="radio" aria-checked="false" data-meter="prepay"><span class="wf-placeholder ratio-4-3">Photo: key or card prepay meter</span><span class="meter-name">Key or card prepay</span><span class="wf-meta">You top up with a key or card at a shop</span></button>
+        <button type="button" class="meter-opt" role="radio" aria-checked="false" data-meter="traditional"><span class="wf-placeholder ratio-4-3">Photo: dial or digital meter</span><span class="meter-name">Traditional meter</span><span class="wf-meta">Dials or numbers you read yourself</span></button>
+        <button type="button" class="meter-opt" role="radio" aria-checked="false" data-meter="rts"><span class="wf-placeholder ratio-4-3">Photo: radio teleswitch meter</span><span class="meter-name">Radio teleswitch</span><span class="wf-meta">Separate box that switches storage heaters or hot water</span></button>
+        <button type="button" class="meter-opt" role="radio" aria-checked="false" data-meter="unsure"><span class="wf-placeholder ratio-4-3">Icon: question</span><span class="meter-name">I can't tell or can't reach it</span><span class="wf-meta">Your supplier can tell you</span></button>
+      </div>
+      <p class="wf-note" data-note="1"><span class="wf-note-label">Content</span>Photos to be supplied by Smart Energy GB, showing real meters with any supplier branding removed.</p>
+
+      <!-- Result (R17) -->
+      <div class="panel surface meter-result" data-meter-result aria-live="polite" tabindex="-1">
+        <p class="muted" style="margin:0">Choose a meter above to see what it means for you.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+  <script src="~/js/data.js"></script>
+  <script src="~/js/wireframe.js"></script>
+  <script src="~/js/prototypes.js"></script>
+  <script src="~/js/photos.js"></script>
+</body>
+</html>
