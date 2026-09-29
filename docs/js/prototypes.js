@@ -25,6 +25,8 @@
   function money(n) { return '£' + Math.round(n).toLocaleString('en-GB'); }
   function pence(n) { return n.toFixed(2) + 'p'; }
   function setText(sel, txt, root) { $all(sel, root).forEach(function (el) { el.textContent = txt; }); }
+  /* Tracking lives in roadmap.js; calls here are safe if it isn't loaded. */
+  function track(name, params) { if (window.segbTrack) window.segbTrack(name, params || {}); }
 
   /* --- Query parameters (?supplier=, ?q=, ?start=) ------------------------
      Some hosts strip the query string, so the last clicked link's query is
@@ -185,6 +187,7 @@
           return;
         }
         input.value = s.name;
+        track('supplier_select', { supplier: s.name, former_supplier: !!s.now, place: linkMode ? 'homepage' : 'get-a-smart-meter' });
         if (linkMode) {
           var href = 'get-a-smart-meter.html?supplier=' + encodeURIComponent(s.id);
           rememberQuery(href);
@@ -217,7 +220,7 @@
       input.addEventListener('blur', function () { window.setTimeout(close, 150); });
 
       var go = $('[data-handover-go]', finder);
-      if (go) go.addEventListener('click', function (e) { e.preventDefault(); toast('On the live site this opens ' + (window.segbChosen || 'the supplier') + "'s smart meter booking page"); });
+      if (go) go.addEventListener('click', function (e) { e.preventDefault(); track('handover_continue', { supplier: window.segbChosen || '' }); toast('On the live site this opens ' + (window.segbChosen || 'the supplier') + "'s smart meter booking page"); });
       var reset = $('[data-finder-reset]', finder);
       if (reset) reset.addEventListener('click', function () { handover.hidden = true; input.value = ''; status.textContent = ''; input.focus(); });
 
@@ -242,8 +245,9 @@
   function initCopies() {
     var cl = $('[data-copy-checklist]');
     if (cl) cl.addEventListener('click', function () {
-      var items = $all('#checklist-items li').map(function (li) { return '- ' + li.textContent; });
-      copyText('Smart meter installation: get-ready checklist\n' + items.join('\n'), 'Checklist copied');
+      var items = $all('[data-journey-checks] li').map(function (li) { var c = $('input', li); return (c && c.checked ? '[x] ' : '[ ] ') + li.textContent.trim(); });
+      copyText('Smart meter installation checklist\n' + items.join('\n'), 'Checklist copied');
+      track('checklist_copy', {});
     });
     var cp = $('[data-copy-link]');
     if (cp) cp.addEventListener('click', function () { copyText(window.location.href.split('?')[0], 'Link copied'); });
@@ -259,6 +263,7 @@
       done.hidden = false;
       setText('[data-remind-email]', $('#remind-email').value);
       setText('[data-remind-when]', $('#remind-when').value.toLowerCase());
+      track('reminder_set', { when: $('#remind-when').value });
       if (!window.segbChosen) setText('[data-handover-name]', 'your supplier', done);
       $('h2', done).focus();
     });
@@ -340,6 +345,7 @@
       $all('.checker-opt', stage).forEach(function (b) {
         b.addEventListener('click', function () {
           path.push({ node: id, a: b.textContent });
+          track('checker_answer', { question: id, answer: b.textContent.slice(0, 40) });
           renderTrail();
           showNode(b.getAttribute('data-next'), true);
         });
@@ -348,6 +354,7 @@
     }
     function showResult(key, focus) {
       var r = RESULTS[key];
+      track('checker_result', { result: key });
       var html = '<div class="result-card kind-' + r.k + '"><span class="badge solid">' + KIND[r.k] + '</span><h3>' + esc(r.t) + '</h3><ul>' +
         r.b.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
       if (r.n) html += '<p>' + esc(r.n) + '</p>';
@@ -468,12 +475,13 @@
     var box = $('[data-estimator]');
     if (!box) return;
     var e = $('#est-elec'), g = $('#est-gas'), ng = $('#est-nogas');
-    [e, g].forEach(function (i) { i.addEventListener('input', function () { renderEstimate(lastCap); }); });
+    [e, g].forEach(function (i) { i.addEventListener('input', function () { renderEstimate(lastCap); }); i.addEventListener('change', function () { track('cost_calculator_adjust', { elec_kwh: e.value, gas_kwh: g.value }); }); });
     ng.addEventListener('change', function () { g.disabled = ng.checked; renderEstimate(lastCap); });
     $('.seg', box).addEventListener('segchange', function (ev) {
       var p = PRESETS[ev.detail.getAttribute('data-preset')];
       e.value = p[0]; g.value = p[1];
       renderEstimate(lastCap);
+      track('cost_calculator_preset', { preset: ev.detail.getAttribute('data-preset') });
     });
   }
   function costs(p, ek, gk) {
@@ -542,6 +550,7 @@
         chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
         var a = c.getAttribute('data-appliance');
         setText('[data-peak-advice]', a + ': ' + ADVICE[a]);
+        track('peak_appliance', { appliance: a });
       });
     });
     draw();
@@ -566,14 +575,28 @@
       no: '<p><strong>There\'s nothing you need to do right now.</strong> If your supplier contacts you, they\'ll arrange everything.</p>',
       unsure: '<p><strong>Check for letters, emails or texts from your supplier</strong> that mention your smart meter or its "communications hub". If you\'re not sure a message is genuine, call the number on your bill.</p>'
     };
-    $('.seg', box).addEventListener('segchange', function (e) { out.innerHTML = A[e.detail.getAttribute('data-su')]; });
+    $('.seg', box).addEventListener('segchange', function (e) { out.innerHTML = A[e.detail.getAttribute('data-su')]; track('switchup_contacted', { answer: e.detail.getAttribute('data-su') }); });
   }
 
   /* --- Find an answer (R50–R54) ------------------------------------------ */
-  var STOP = ['a', 'an', 'the', 'i', 'my', 'do', 'does', 'is', 'it', 'to', 'of', 'for', 'can', 'and', 'or', 'in', 'on', 'me', 'need', 'what', 'how', 'why', 'with', 'have', 'if', 'get', 'are', 'will'];
+  var STOP = ['one', 'am', 'there', 'any', 'be', 'been', 'a', 'an', 'the', 'i', 'my', 'do', 'does', 'is', 'it', 'to', 'of', 'for', 'can', 'and', 'or', 'in', 'on', 'me', 'need', 'what', 'how', 'why', 'with', 'have', 'if', 'get', 'are', 'will'];
+  /* A little intent matching: words people use for the same thing. In the
+     build a semantic search service would do this properly. */
+  var SYN = {
+    wifi: ['internet', 'broadband'], internet: ['wifi'], broadband: ['wifi'],
+    broken: ['working', 'fault', 'blank'], faulty: ['working', 'blank'], blank: ['display'],
+    cost: ['free', 'price', 'charge'], pay: ['free', 'cost'], price: ['cap', 'cost'], money: ['save', 'cost'],
+    safe: ['safety', 'health'], dangerous: ['safe', 'health'], radiation: ['safe', 'radio'], health: ['safe'],
+    allowed: ['rent', 'landlord', 'permission'], permission: ['landlord'], flat: ['rent'], tenant: ['rent'],
+    install: ['installation', 'fitted'], fitted: ['install'], engineer: ['install'],
+    data: ['privacy'], privacy: ['data'], spy: ['data', 'privacy'],
+    cheap: ['peak', 'off-peak', 'tariff'], night: ['peak', 'off-peak'],
+    replace: ['switch', 'hub'], letter: ['switch', 'supplier']
+  };
   function searchAnswers(q) {
     var words = norm(q).split(' ').filter(function (w) { return w && STOP.indexOf(w) === -1; });
     if (!words.length) return null;
+    words.slice().forEach(function (w) { (SYN[w] || []).forEach(function (x) { if (words.indexOf(x) === -1) words.push(x); }); });
     return ANSWERS.map(function (a) {
       var head = (a.q + ' ' + a.tags).toLowerCase(), body = a.a.toLowerCase(), s = 0;
       words.forEach(function (w) { if (head.indexOf(w) !== -1) s += 3; else if (body.indexOf(w) !== -1) s += 1; });
@@ -621,11 +644,39 @@
       else count.textContent = 'No answers for "' + q + '"' + tl + '. Try different words, or choose a topic.';
       list.innerHTML = items.map(answerHTML).join('');
       $('[data-myths-section]').hidden = !browsing;
+      showAi(q, browsing || hit ? [] : items);
       if (hitId) { var el = document.getElementById('a-' + hitId); if (el) el.classList.add('hit'); }
     }
+    /* Suggested answer for questions asked in people's own words (R55) */
+    var ai = $('[data-ai-answer]');
+    function showAi(q, items) {
+      if (!ai) return;
+      var natural = q.split(/\s+/).length >= 4 || /\?$/.test(q);
+      if (!natural || !items.length) { ai.hidden = true; return; }
+      var a = items[0], b = items[1] && items[1].topic === a.topic ? items[1] : null;
+      var follow = ANSWERS.filter(function (x) { return x.topic === a.topic && x !== a && x !== b; });
+      items.slice(1).forEach(function (x) { if (follow.indexOf(x) === -1 && x !== b) follow.push(x); });
+      follow = follow.slice(0, 3);
+      ai.innerHTML = '<p class="eyebrow">Suggested answer</p><p class="ai-text">' + esc(a.a) + '</p>' +
+        '<p class="ai-sources">Based on: <a href="#a-' + a.id + '">' + esc(a.q) + '</a>' + (b ? ' and <a href="#a-' + b.id + '">' + esc(b.q) + '</a>' : '') + '</p>' +
+        (follow.length ? '<div class="ai-follow"><span>You might also ask:</span>' + follow.map(function (f) { return '<button type="button" class="chip" data-follow="' + f.id + '">' + esc(f.q) + '</button>'; }).join('') + '</div>' : '');
+      ai.hidden = false;
+      track('ai_answer_shown', { query: q, sources: a.id + (b ? ',' + b.id : '') });
+      $all('[data-follow]', ai).forEach(function (c) {
+        c.addEventListener('click', function () {
+          var f = ANSWERS.filter(function (x) { return x.id === c.getAttribute('data-follow'); })[0];
+          input.value = f.q; track('ai_follow_up', { answer: f.id }); run(f.id);
+        });
+      });
+    }
+    form.addEventListener('submit', function () {
+      window.setTimeout(function () { track('search', { query: input.value.trim(), results: $all('.answer', list).length }); }, 0);
+    });
+
     list.addEventListener('click', function (e) {
       var b = e.target.closest('[data-h]'); if (!b) return;
       var box = b.closest('[data-helpful]');
+      track('answer_feedback', { answer: b.closest('.answer').id.replace('a-', ''), helpful: b.getAttribute('data-h') });
       if (b.getAttribute('data-h') === 'yes') { box.innerHTML = '<span role="status">Thanks for letting us know.</span>'; return; }
       var id = 'fb-' + Math.random().toString(36).slice(2, 7);
       box.innerHTML = '<form class="fb-form"><label for="' + id + '">What were you looking for?</label><input id="' + id + '" type="text"><button type="submit" class="btn btn-sm">Send</button></form>';
@@ -659,8 +710,18 @@
     form.addEventListener('submit', function (e) { e.preventDefault(); closeSuggest(); run(); });
 
     $('[data-myths]').innerHTML = ANSWERS.filter(function (a) { return a.myth; }).map(function (a) {
-      return '<div class="myth-card"><p class="myth"><span class="badge">Myth</span> ' + esc(a.myth) + '</p><p class="fact"><span class="badge solid">Fact</span> ' + esc(a.a) + '</p></div>';
+      return '<div class="myth-card" data-myth="' + a.id + '"><p class="myth"><span class="badge">Myth</span> ' + esc(a.myth) + '</p><p class="fact"><span class="badge solid">Fact</span> ' + esc(a.a) + '</p>' +
+        '<div class="myth-poll"><span>Did this change your mind?</span><button type="button" class="btn btn-sm btn-secondary" data-poll="yes">Yes</button><button type="button" class="btn btn-sm btn-secondary" data-poll="not-yet">Not yet</button><button type="button" class="btn btn-sm btn-secondary" data-poll="knew">I already knew</button></div></div>';
     }).join('');
+    /* Myth poll (R56): a direct measure of what moves sceptical visitors */
+    $('[data-myths]').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-poll]'); if (!b) return;
+      var card = b.closest('[data-myth]');
+      track('myth_poll', { myth: card.getAttribute('data-myth'), response: b.getAttribute('data-poll') });
+      b.closest('.myth-poll').innerHTML = b.getAttribute('data-poll') === 'not-yet' ? '<span role="status">Thanks. <a href="stories.html">Hear from people who felt the same</a>.</span>' : '<span role="status">Thanks for telling us.</span>';
+    });
+    var t0 = param('topic');
+    if (t0 && $('[data-topic="' + t0 + '"]', chipsHost)) { topic = t0; $all('[data-topic]', chipsHost).forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-topic') === t0 ? 'true' : 'false'); }); }
 
     var q0 = param('q');
     if (q0) input.value = q0;

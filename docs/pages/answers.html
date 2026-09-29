@@ -22,6 +22,8 @@
           <li><a href="../pages/energy-prices.html" data-proto="energy-prices"><span class="n">3</span> Prices</a></li>
           <li><a href="../pages/home.html" data-proto="home switch-up"><span class="n">4</span> Homepage</a></li>
           <li><a href="../pages/answers.html" data-proto="answers"><span class="n">5</span> Answers</a></li>
+          <li><a href="../pages/stories.html" data-proto="stories story"><span class="n">6</span> Stories</a></li>
+          <li><a href="../pages/bills.html" data-proto="bills"><span class="n">7</span> Bills</a></li>
         </ul>
       </nav>
       <button type="button" class="notes-toggle" role="switch" aria-checked="false" data-notes-toggle>
@@ -35,9 +37,9 @@
   <main id="main" class="flush">
     <aside class="proposal" aria-label="About this prototype">
       <div class="container">
-        <p class="proposal-eyebrow">Prototype 5 of 5 · Find an answer fast</p>
+        <p class="proposal-eyebrow">Prototype 5 of 7 · Find an answer fast</p>
         <div class="proposal-grid">
-          <div><h2>What we're proposing</h2><p>Site search that answers the question on the results page, backed by one set of answers that every page draws on. People can search, or browse by topic, and myths sit beside the facts that answer them. Each answer asks "Did this help?", so Smart Energy GB can see which answers need work and what people are searching for.</p></div>
+          <div><h2>What we're proposing</h2><p>Site search that answers the question on the results page, backed by one set of answers that every page draws on. People can search, or browse by topic, and myths sit beside the facts that answer them. Each answer asks "Did this help?", so Smart Energy GB can see which answers need work and what people are searching for. Following the personalised AI search idea in the ClerksWell 2027 roadmap proposal, a question asked in people's own words also gets a short suggested answer, built from Smart Energy GB's own answers and linked to them, with follow-up questions to try. Myth cards ask "Did this change your mind?", which gives Smart Energy GB a measure of what moves the last holdouts.</p></div>
           <div><h2>Why</h2><p>There's no search on the main site, which has 164 pages in its sitemap. The FAQs are about 50 questions on one long page, last updated in August 2025, and the homepage tiles repeat some of the same answers separately. Myths and facts are split across two sections. Structured answers also help search engines and AI assistants give Smart Energy GB's answer rather than someone else's.</p></div>
         </div>
         <p class="proposal-foot">A sample of 29 answers, drafted from the live FAQs for Smart Energy GB to check.</p>
@@ -65,6 +67,8 @@
       <!-- Results (R51, R52) -->
       <section aria-labelledby="res-title">
         <h2 class="visually-hidden" id="res-title">Answers</h2>
+        <div class="ai-answer panel" data-ai-answer hidden aria-live="polite"></div>
+        <p class="wf-note" data-note="4"><span class="wf-note-label">Behaviour</span>Try "is it safe to have one in my kitchen" or "I rent a flat, am I allowed one". The suggested answer is simulated in this prototype from the sample answers. In the build, a semantic search service such as Algolia, Coveo or SearchStax would match meaning rather than words, and the answer would only ever quote Smart Energy GB's own content, with links.</p>
         <p class="result-count" data-answers-count aria-live="polite"></p>
         <div data-answers-list></div>
       </section>
@@ -85,6 +89,20 @@
     </div>
   </main>
 
+  <!-- Guided assistant launcher, on every page (R64) -->
+  <button type="button" class="assistant-launch" data-modal-open="assistant-modal">Help me find<span class="al-more"> the right thing</span></button>
+  <div class="wf-modal" id="assistant-modal" role="dialog" aria-modal="true" aria-labelledby="assistant-modal-title">
+    <div class="wf-modal-panel">
+      <button type="button" class="wf-modal-close" aria-label="Close">&times;</button>
+      <h2 id="assistant-modal-title">Let's find the right thing for you</h2>
+      <div class="assistant" data-assistant id="assistant-modal-body"></div>
+    </div>
+  </div>
+  <!-- GA4 event log, visible with Notes on (R67) -->
+  <aside class="event-log" data-event-log aria-label="Tracking events (prototype)" hidden>
+    <p class="event-log-h">GA4 events <span>prototype</span></p>
+    <ol data-event-list></ol>
+  </aside>
   <!-- Prototype pager (replaces Smart Energy GB's own footer) -->
   <footer class="proto-footer">
     <div class="container">
@@ -96,6 +114,7 @@
   <script src="../js/data.js"></script>
   <script src="../js/wireframe.js"></script>
   <script src="../js/prototypes.js"></script>
+  <script src="../js/roadmap.js"></script>
   <script src="../js/photos.js"></script>
 </body>
 </html>

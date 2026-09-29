@@ -52,3 +52,33 @@ client requirements; Smart Energy GB has not yet reviewed them.
 - R52 One answer source reused across pages (#30).
 - R53 Myths and facts from the same answers (#19).
 - R54 "Did this help?" feedback on every answer (#29).
+
+## V3 — from the ClerksWell 2027 roadmap proposal
+Source: "ClerksWell x Smart Energy GB 2027 Roadmap Proposal" (project file, 29 Sep 2026). Deck idea in brackets.
+
+### Prototype 1 — Installation journey (Improving installation journey)
+- R18 The page is organised as before you book, on the day and after installation, with a tickable checklist per stage, a progress count and a step-by-step view of the day. Supplier agnostic. `?mode=business` opens the business view.
+
+### Prototype 4 — Guided assistant and personalisation (Guided assistant; Project 4 Personalisation)
+- R64 A non-AI guided assistant of five questions (meter, home, payment, main concern, age group), on the homepage and from a "Help me find" button on every page.
+- R65 Fixed routing from answers to up to four next steps.
+- R66 Answers are remembered for the visit; the homepage shows "Picked for you" and moves the most relevant door first.
+- R67 Every key interaction pushes a named GA4 event to the dataLayer; an event log shows them when Notes are on (Project 2 Analytics review).
+
+### Prototype 5 — Personalised AI search (Personalised AI search)
+- R55 Questions asked in people's own words get a suggested answer built only from Smart Energy GB's answers, with sources and follow-up questions. Simple intent matching stands in for a semantic search service.
+- R56 Each myth asks "Did this change your mind?" and records the response (Project 4: tracking on mythbusting).
+
+### Prototype 6 — Real stories (Real user case studies)
+- R60 A stories hub filterable by renter, homeowner, older and younger; `?persona=` links in.
+- R61 One story template: the worry, what happened, what changed, facts, film, matching answer, and cuts for social and email.
+- R62 Short quotes from the live site, tagged where the quote supports it.
+- R63 "Share your story" form with consent.
+
+### Prototype 7 — Estimated bills explained (Education through interaction)
+- R70 Scenario picker (cold winter, working from home, new baby, moving house) with two sliders.
+- R71 Running totals chart of paid versus used, with hover detail, a table view and the catch-up bill, using the shared price record.
+- R72 The same months with a smart meter, and a route to get one.
+
+### Not prototyped
+- Project 1 Ember implementation, Project 3 CMS AI enhancement (PDF to page, AI metadata, SEO and GA4 reporting agents): back-office or delivery work, outside the public site.

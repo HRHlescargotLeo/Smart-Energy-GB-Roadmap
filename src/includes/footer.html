@@ -1,3 +1,17 @@
+  <!-- Guided assistant launcher, on every page (R64) -->
+  <button type="button" class="assistant-launch" data-modal-open="assistant-modal">Help me find<span class="al-more"> the right thing</span></button>
+  <div class="wf-modal" id="assistant-modal" role="dialog" aria-modal="true" aria-labelledby="assistant-modal-title">
+    <div class="wf-modal-panel">
+      <button type="button" class="wf-modal-close" aria-label="Close">&times;</button>
+      <h2 id="assistant-modal-title">Let's find the right thing for you</h2>
+      <div class="assistant" data-assistant id="assistant-modal-body"></div>
+    </div>
+  </div>
+  <!-- GA4 event log, visible with Notes on (R67) -->
+  <aside class="event-log" data-event-log aria-label="Tracking events (prototype)" hidden>
+    <p class="event-log-h">GA4 events <span>prototype</span></p>
+    <ol data-event-list></ol>
+  </aside>
   <!-- Prototype pager (replaces Smart Energy GB's own footer) -->
   <footer class="proto-footer">
     <div class="container">

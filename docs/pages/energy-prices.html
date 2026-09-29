@@ -22,6 +22,8 @@
           <li><a href="../pages/energy-prices.html" data-proto="energy-prices"><span class="n">3</span> Prices</a></li>
           <li><a href="../pages/home.html" data-proto="home switch-up"><span class="n">4</span> Homepage</a></li>
           <li><a href="../pages/answers.html" data-proto="answers"><span class="n">5</span> Answers</a></li>
+          <li><a href="../pages/stories.html" data-proto="stories story"><span class="n">6</span> Stories</a></li>
+          <li><a href="../pages/bills.html" data-proto="bills"><span class="n">7</span> Bills</a></li>
         </ul>
       </nav>
       <button type="button" class="notes-toggle" role="switch" aria-checked="false" data-notes-toggle>
@@ -35,7 +37,7 @@
   <main id="main" class="flush">
     <aside class="proposal" aria-label="About this prototype">
       <div class="container">
-        <p class="proposal-eyebrow">Prototype 3 of 5 · Energy prices, always current</p>
+        <p class="proposal-eyebrow">Prototype 3 of 7 · Energy prices, always current</p>
         <div class="proposal-grid">
           <div><h2>What we're proposing</h2><p>Hold the price cap, unit rates and dates in one record in the CMS and have every page read from it. The page then moves from "current" to "upcoming" on the day the cap changes, without anyone editing it. Alongside it: a simpler bill estimator that uses the same figures, and a clock that shows peak and off-peak times at a glance.</p></div>
           <div><h2>Why</h2><p>Price cap content is some of the most searched-for on the site, and it changes every three months. On the live page the July to September cap appears as £1,862 in the text and £1,663 in the table (Ofgem's figure is £1,663), and the footnote uses older typical-use figures than Ofgem's current ones. When the same number is typed into several places, one of them will eventually be wrong.</p></div>
@@ -167,6 +169,20 @@
     </div>
   </main>
 
+  <!-- Guided assistant launcher, on every page (R64) -->
+  <button type="button" class="assistant-launch" data-modal-open="assistant-modal">Help me find<span class="al-more"> the right thing</span></button>
+  <div class="wf-modal" id="assistant-modal" role="dialog" aria-modal="true" aria-labelledby="assistant-modal-title">
+    <div class="wf-modal-panel">
+      <button type="button" class="wf-modal-close" aria-label="Close">&times;</button>
+      <h2 id="assistant-modal-title">Let's find the right thing for you</h2>
+      <div class="assistant" data-assistant id="assistant-modal-body"></div>
+    </div>
+  </div>
+  <!-- GA4 event log, visible with Notes on (R67) -->
+  <aside class="event-log" data-event-log aria-label="Tracking events (prototype)" hidden>
+    <p class="event-log-h">GA4 events <span>prototype</span></p>
+    <ol data-event-list></ol>
+  </aside>
   <!-- Prototype pager (replaces Smart Energy GB's own footer) -->
   <footer class="proto-footer">
     <div class="container">
@@ -178,6 +194,7 @@
   <script src="../js/data.js"></script>
   <script src="../js/wireframe.js"></script>
   <script src="../js/prototypes.js"></script>
+  <script src="../js/roadmap.js"></script>
   <script src="../js/photos.js"></script>
 </body>
 </html>

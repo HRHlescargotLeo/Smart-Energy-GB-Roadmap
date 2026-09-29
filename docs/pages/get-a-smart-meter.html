@@ -22,6 +22,8 @@
           <li><a href="../pages/energy-prices.html" data-proto="energy-prices"><span class="n">3</span> Prices</a></li>
           <li><a href="../pages/home.html" data-proto="home switch-up"><span class="n">4</span> Homepage</a></li>
           <li><a href="../pages/answers.html" data-proto="answers"><span class="n">5</span> Answers</a></li>
+          <li><a href="../pages/stories.html" data-proto="stories story"><span class="n">6</span> Stories</a></li>
+          <li><a href="../pages/bills.html" data-proto="bills"><span class="n">7</span> Bills</a></li>
         </ul>
       </nav>
       <button type="button" class="notes-toggle" role="switch" aria-checked="false" data-notes-toggle>
@@ -36,9 +38,9 @@
     <!-- What we're proposing and why (shown when Notes are on) -->
     <aside class="proposal" aria-label="About this prototype">
       <div class="container">
-        <p class="proposal-eyebrow">Prototype 1 of 5 · Get a smart meter</p>
+        <p class="proposal-eyebrow">Prototype 1 of 7 · Get a smart meter</p>
         <div class="proposal-grid">
-          <div><h2>What we're proposing</h2><p>One page that takes people from "I'd like a smart meter" to a booked installation in three clear steps. The supplier finder stays at the heart of it, but with a tidied list, a short "here's what happens next" before we hand people over to their supplier, a get-ready checklist, and a way to be reminded later for anyone who isn't ready to book today.</p></div>
+          <div><h2>What we're proposing</h2><p>One page that takes people from "I'd like a smart meter" through to the weeks after installation, in three stages: before you book, on the day and after. The supplier finder stays at the heart of the first stage, with a tidied list and a short "here's what happens next" before we hand people over. Each stage has a short checklist people can tick off, and there's a way to be reminded later for anyone who isn't ready to book today. This version takes in the installation journey from the ClerksWell 2027 roadmap proposal.</p></div>
           <div><h2>Why</h2><p>Getting a first installation is still Smart Energy GB's main job to 2030. Today the Get a smart meter page has around 150 words and six links to other topics, and the actual steps sit on a separate page. The finder itself is well built, but some names lead nowhere: GnErgy goes to bulb.co.uk, which is now a parked domain, and five others go to a Shell Energy page even though the same list says Shell customers are now with Octopus. People who aren't ready to book simply leave, and Smart Energy GB has no way to come back to them.</p></div>
         </div>
         <p class="proposal-foot">Supplier list is a sample. Links to suppliers are placeholders.</p>
@@ -49,7 +51,7 @@
     <div class="page-head">
       <div class="container">
         <h1>Get a smart meter</h1>
-        <p class="lead">Households and small businesses in England, Scotland and Wales can get a smart meter at no extra cost. It takes three steps, and the installation itself usually takes about two hours.</p>
+        <p class="lead">Households and small businesses in England, Scotland and Wales can get a smart meter at no extra cost. Here's what to do before you book, what happens on the day and what to expect afterwards.</p>
         <div class="seg" role="radiogroup" aria-label="Who is the smart meter for?" data-finder-mode>
           <button type="button" role="radio" aria-checked="true" data-mode="home">For my home</button>
           <button type="button" role="radio" aria-checked="false" data-mode="business">For my small business</button>
@@ -60,13 +62,24 @@
 
     <div class="container" style="padding-top:2.5rem">
 
-      <!-- Three steps (R11) -->
-      <ol class="steps" aria-label="Three steps to a smart meter">
+      <!-- Installation journey: before you book, on the day, after (R11, R14, R15, R18) -->
+      <nav class="journey-nav" aria-label="Your installation journey" data-journey-nav>
+        <ol>
+          <li><a href="#before"><span class="jn-num">1</span> Before you book</a></li>
+          <li><a href="#on-the-day"><span class="jn-num">2</span> On the day</a></li>
+          <li><a href="#after"><span class="jn-num">3</span> After installation</a></li>
+        </ol>
+        <p class="jn-progress" aria-live="polite"><strong data-journey-count>0 of 12</strong> ready <span class="jn-bar" aria-hidden="true"><span data-journey-bar></span></span></p>
+      </nav>
+      <p class="wf-note" data-note="2"><span class="wf-note-label">Behaviour</span>The journey follows the 2027 roadmap proposal: before you book, on the day and after installation, as a guided checklist. Ticks are remembered for the session and counted in the bar above, and each tick is a trackable event. The page stays supplier agnostic: the supplier finder hands people over, and everything else applies whoever the supplier is.</p>
 
-        <!-- Step 1: find your supplier (R12, R13) -->
-        <li class="step" id="step-1">
+      <ol class="steps journey" aria-label="Your installation journey">
+
+        <!-- 1. Before you book (R12, R13, R18) -->
+        <li class="step" id="before">
           <div class="step-num" aria-hidden="true">1</div>
           <div class="step-body">
+            <p class="eyebrow">Before you book</p>
             <h2>Find your energy supplier</h2>
             <p>Your energy supplier installs your smart meter. Type their name and we'll take you to the right place to book.</p>
 
@@ -95,48 +108,79 @@
                 </div>
               </div>
             </div>
-            <p class="wf-note" data-note="2"><span class="wf-note-label">Behaviour</span>Try "bulb", "shel" or "octupus". Former suppliers go straight to the supplier that now looks after their customers, with a one-line explanation, so there are no chains of redirects or dead links. Arrow keys move through the list; Enter chooses; Escape closes.</p>
-            <p class="wf-note query" data-note="3"><span class="wf-note-label">Open question</span>Who keeps the supplier list up to date today? We'd suggest a named owner, a review date and an automatic weekly check that every link still works.</p>
+            <p class="wf-note" data-note="3"><span class="wf-note-label">Behaviour</span>Try "bulb", "shel" or "octupus". Former suppliers go straight to the supplier that now looks after their customers, with a one-line explanation, so there are no chains of redirects or dead links. Arrow keys move through the list; Enter chooses; Escape closes.</p>
+            <p class="wf-note query" data-note="4"><span class="wf-note-label">Open question</span>Who keeps the supplier list up to date today? We'd suggest a named owner, a review date and an automatic weekly check that every link still works.</p>
+
+            <div class="checklist panel">
+              <h3>Before you book</h3>
+              <ul class="checks" data-journey-checks>
+                <li><label class="check"><input type="checkbox" id="ck-account" data-check> Find your account number on a bill or in your supplier's app</label></li>
+                <li><label class="check"><input type="checkbox" id="ck-meters" data-check> Check where your gas and electricity meters are</label></li>
+                <li><label class="check"><input type="checkbox" id="ck-needs" data-check> Note anything you need on the day, such as an accessible display or extra help</label></li>
+                <li><label class="check"><input type="checkbox" id="ck-dates" data-check> Pick two or three dates when you can be in for about two hours</label></li>
+              </ul>
+            </div>
 
             <div class="accordion">
               <div class="accordion-item"><button type="button" class="accordion-title">I'm not sure who my supplier is<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>Your supplier's name is on your energy bill, in emails from them and in their app. If you've just moved in and don't know, the Find my supplier service can tell you from your address.</p></div></div>
               <div class="accordion-item"><button type="button" class="accordion-title">I might already have a smart meter<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>Compare your meter with the common types and we'll tell you what it means. <a href="../pages/which-meter.html">Check which meter you have</a></p></div></div>
               <div class="accordion-item"><button type="button" class="accordion-title">My gas and electricity come from different suppliers<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>Contact both. If you can, have your electricity smart meter installed first, because your gas meter connects to the network through it.</p></div></div>
+              <div class="accordion-item"><button type="button" class="accordion-title">I rent my home<span class="accordion-icon" aria-hidden="true">&#9662;</span></button><div class="accordion-content"><p>If you pay the energy bills, you can ask your supplier for a smart meter. It's a good idea to tell your landlord. <a href="../pages/stories.html?persona=renter">Hear from renters who've had one fitted</a></p></div></div>
             </div>
           </div>
         </li>
 
-        <!-- Step 2: book a date (R14) -->
-        <li class="step" id="step-2">
+        <!-- 2. On the day (R14, R15) -->
+        <li class="step" id="on-the-day">
           <div class="step-num" aria-hidden="true">2</div>
           <div class="step-body">
-            <h2>Book a date with your supplier</h2>
-            <p>Your supplier will offer you an appointment. Things worth knowing when you book:</p>
+            <p class="eyebrow">On the day</p>
+            <h2>What happens when the installer arrives</h2>
             <div class="grid grid-3">
-              <div class="card"><h3 class="card-title">About two hours</h3><p class="card-text">For gas and electricity together. Your supply is off for a short time while the meter is changed.</p></div>
+              <div class="card"><h3 class="card-title">About two hours</h3><p class="card-text">For gas and electricity together. Your supply is off for a short time while the meters are changed.</p></div>
               <div class="card"><h3 class="card-title">No extra cost</h3><p class="card-text">There's no charge for the installation or the in-home display, and no extra charge on your bill.</p></div>
-              <div class="card"><h3 class="card-title">Tell them what you need</h3><p class="card-text">If you need extra help, an accessible display or a particular time, say so when you book.</p></div>
+              <div class="card"><h3 class="card-title">A trained installer</h3><p class="card-text">Installers follow a code of practice that covers safety and how they treat you in your home.</p></div>
+            </div>
+            <ol class="day-timeline" data-day-timeline>
+              <li><button type="button" class="dt-step" aria-expanded="true" aria-controls="dt-1"><span class="dt-num">1</span>They arrive and show their ID</button><div class="dt-body" id="dt-1"><p>Check their ID before letting them in. If you're not sure, call your supplier on the number on your bill.</p></div></li>
+              <li><button type="button" class="dt-step" aria-expanded="false" aria-controls="dt-2"><span class="dt-num">2</span>They check your existing meters</button><div class="dt-body" id="dt-2" hidden><p>A quick safety check before any work starts.</p></div></li>
+              <li><button type="button" class="dt-step" aria-expanded="false" aria-controls="dt-3"><span class="dt-num">3</span>Your supply goes off for a short time</button><div class="dt-body" id="dt-3" hidden><p>The old meters come out and the smart meters go in. Anything with a clock may need resetting afterwards.</p></div></li>
+              <li><button type="button" class="dt-step" aria-expanded="false" aria-controls="dt-4"><span class="dt-num">4</span>They set up your in-home display</button><div class="dt-body" id="dt-4" hidden><p>Ask them to show you what each screen means. They can also give you advice on using less energy.</p></div></li>
+              <li><button type="button" class="dt-step" aria-expanded="false" aria-controls="dt-5"><span class="dt-num">5</span>They check everything works, and you're done</button><div class="dt-body" id="dt-5" hidden><p>Your display should start showing what you're using straight away.</p></div></li>
+            </ol>
+            <div class="checklist panel">
+              <h3>On the day</h3>
+              <ul class="checks" data-journey-checks>
+                <li><label class="check"><input type="checkbox" id="ck-path" data-check> Clear a path to your meters</label></li>
+                <li><label class="check"><input type="checkbox" id="ck-id" data-check> Ask to see the installer's ID</label></li>
+                <li><label class="check"><input type="checkbox" id="ck-show" data-check> Ask them to show you how the display works</label></li>
+                <li><label class="check"><input type="checkbox" id="ck-place" data-check> Put the display somewhere you'll see it, such as the kitchen</label></li>
+              </ul>
             </div>
           </div>
         </li>
 
-        <!-- Step 3: on the day (R15) -->
-        <li class="step" id="step-3">
+        <!-- 3. After installation (R24) -->
+        <li class="step" id="after">
           <div class="step-num" aria-hidden="true">3</div>
           <div class="step-body">
-            <h2>Let the installer in</h2>
-            <p>A trained installer from your supplier fits the meters and sets up your in-home display.</p>
+            <p class="eyebrow">After installation</p>
+            <h2>The first few weeks</h2>
+            <ol class="timeline">
+              <li><span class="tl-when">Day 1</span><h3>Your display comes on</h3><p>It shows what you're using now and what it's costing you.</p></li>
+              <li><span class="tl-when">First two weeks</span><h3>Your supplier connects</h3><p>It can take a couple of weeks before they get readings. If they ask for one, you can send it.</p></li>
+              <li><span class="tl-when">First bill</span><h3>Real readings</h3><p>Once connected, your bills use automatic readings, not estimates.</p></li>
+            </ol>
             <div class="checklist panel">
-              <div class="row between"><h3>Get-ready checklist</h3><button type="button" class="btn btn-sm btn-secondary" data-copy-checklist>Copy checklist</button></div>
-              <ul class="ticks" id="checklist-items">
-                <li>Clear a path to your gas and electricity meters</li>
-                <li>Be at home for about two hours</li>
-                <li>Ask to see the installer's ID before letting them in</li>
-                <li>Ask them to show you how the in-home display works</li>
-                <li>Keep the display somewhere you'll see it, such as the kitchen</li>
+              <div class="row between"><h3>After installation</h3><button type="button" class="btn btn-sm btn-secondary" data-copy-checklist>Copy the whole checklist</button></div>
+              <ul class="checks" data-journey-checks>
+                <li><label class="check"><input type="checkbox" id="ck-display" data-check> Check your display is showing today's use</label></li>
+                <li><label class="check"><input type="checkbox" id="ck-bill" data-check> Look for real, not estimated, readings on your next bill</label></li>
+                <li><label class="check"><input type="checkbox" id="ck-try" data-check> Try one change and watch the display, such as the kettle or the tumble dryer</label></li>
+                <li><label class="check"><input type="checkbox" id="ck-later" data-check> Still estimated after a month? <a href="../pages/is-my-meter-working.html">Run the checker</a></label></li>
               </ul>
             </div>
-            <p class="muted" style="margin-top:1rem">After the installation, it can take a few weeks for your supplier to start getting readings. <a href="../pages/is-my-meter-working.html#first-weeks">What happens in the first weeks</a></p>
+            <p class="muted" style="margin-top:1rem">Wondering what estimated bills actually cost you? <a href="../pages/bills.html">See how estimates and catch-up bills work</a></p>
           </div>
         </li>
       </ol>
@@ -149,7 +193,7 @@
         </div>
         <button type="button" class="btn" data-modal-open="remind-modal">Remind me later</button>
       </section>
-      <p class="wf-note query" data-note="4"><span class="wf-note-label">Open question</span>Would Smart Energy GB hold its own reminder list? It gives the campaign a way back to people who were interested but not ready, and needs a privacy notice and consent wording.</p>
+      <p class="wf-note query" data-note="5"><span class="wf-note-label">Open question</span>Would Smart Energy GB hold its own reminder list? It gives the campaign a way back to people who were interested but not ready, and needs a privacy notice and consent wording.</p>
     </div>
 
     <!-- Remind me modal (R16) -->
@@ -189,6 +233,20 @@
     </div>
   </main>
 
+  <!-- Guided assistant launcher, on every page (R64) -->
+  <button type="button" class="assistant-launch" data-modal-open="assistant-modal">Help me find<span class="al-more"> the right thing</span></button>
+  <div class="wf-modal" id="assistant-modal" role="dialog" aria-modal="true" aria-labelledby="assistant-modal-title">
+    <div class="wf-modal-panel">
+      <button type="button" class="wf-modal-close" aria-label="Close">&times;</button>
+      <h2 id="assistant-modal-title">Let's find the right thing for you</h2>
+      <div class="assistant" data-assistant id="assistant-modal-body"></div>
+    </div>
+  </div>
+  <!-- GA4 event log, visible with Notes on (R67) -->
+  <aside class="event-log" data-event-log aria-label="Tracking events (prototype)" hidden>
+    <p class="event-log-h">GA4 events <span>prototype</span></p>
+    <ol data-event-list></ol>
+  </aside>
   <!-- Prototype pager (replaces Smart Energy GB's own footer) -->
   <footer class="proto-footer">
     <div class="container">
@@ -200,6 +258,7 @@
   <script src="../js/data.js"></script>
   <script src="../js/wireframe.js"></script>
   <script src="../js/prototypes.js"></script>
+  <script src="../js/roadmap.js"></script>
   <script src="../js/photos.js"></script>
 </body>
 </html>

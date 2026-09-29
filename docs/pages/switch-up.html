@@ -22,6 +22,8 @@
           <li><a href="../pages/energy-prices.html" data-proto="energy-prices"><span class="n">3</span> Prices</a></li>
           <li><a href="../pages/home.html" data-proto="home switch-up"><span class="n">4</span> Homepage</a></li>
           <li><a href="../pages/answers.html" data-proto="answers"><span class="n">5</span> Answers</a></li>
+          <li><a href="../pages/stories.html" data-proto="stories story"><span class="n">6</span> Stories</a></li>
+          <li><a href="../pages/bills.html" data-proto="bills"><span class="n">7</span> Bills</a></li>
         </ul>
       </nav>
       <button type="button" class="notes-toggle" role="switch" aria-checked="false" data-notes-toggle>
@@ -35,7 +37,7 @@
   <main id="main" class="flush">
     <aside class="proposal" aria-label="About this page">
       <div class="container">
-        <p class="proposal-eyebrow">Prototype 4 of 5 · Campaign landing template, shown with Switch Up, Stay Smart</p>
+        <p class="proposal-eyebrow">Prototype 4 of 7 · Campaign landing template, shown with Switch Up, Stay Smart</p>
         <div class="proposal-grid">
           <div><h2>What we're proposing</h2><p>One template for every campaign: a film or hero image, one message, one action, a short "what happens" sequence, answers to the questions the campaign raises, and a link to the press materials. New campaigns launch by filling in the template rather than building a page.</p></div>
           <div><h2>Why</h2><p>Campaigns (Einstein, Johnny Vegas, Ross Kemp) currently live as homepage blocks that lead to ordinary content pages. The Switch Up, Stay Smart page was updated on 8 September 2026 but isn't linked from the homepage, the About smart meters section, the FAQs or Get a smart meter, and isn't in the sitemap, so people who get a letter from their supplier and search for it have little chance of finding it.</p></div>
@@ -99,6 +101,20 @@
     </div>
   </main>
 
+  <!-- Guided assistant launcher, on every page (R64) -->
+  <button type="button" class="assistant-launch" data-modal-open="assistant-modal">Help me find<span class="al-more"> the right thing</span></button>
+  <div class="wf-modal" id="assistant-modal" role="dialog" aria-modal="true" aria-labelledby="assistant-modal-title">
+    <div class="wf-modal-panel">
+      <button type="button" class="wf-modal-close" aria-label="Close">&times;</button>
+      <h2 id="assistant-modal-title">Let's find the right thing for you</h2>
+      <div class="assistant" data-assistant id="assistant-modal-body"></div>
+    </div>
+  </div>
+  <!-- GA4 event log, visible with Notes on (R67) -->
+  <aside class="event-log" data-event-log aria-label="Tracking events (prototype)" hidden>
+    <p class="event-log-h">GA4 events <span>prototype</span></p>
+    <ol data-event-list></ol>
+  </aside>
   <!-- Prototype pager (replaces Smart Energy GB's own footer) -->
   <footer class="proto-footer">
     <div class="container">
@@ -110,6 +126,7 @@
   <script src="../js/data.js"></script>
   <script src="../js/wireframe.js"></script>
   <script src="../js/prototypes.js"></script>
+  <script src="../js/roadmap.js"></script>
   <script src="../js/photos.js"></script>
 </body>
 </html>

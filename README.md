@@ -1,6 +1,6 @@
-# Smart Energy GB — website improvement prototypes (V2)
+# Smart Energy GB — website improvement prototypes (V3)
 
-Five clickable prototypes for improvements to smartenergygb.org, prepared by ClerksWell following the
+Seven clickable prototypes for improvements to smartenergygb.org, prepared by ClerksWell following the
 phase 1 review (28 September 2026). The Smart Energy GB design layer (colours, Hind type, buttons, panels,
 imagery treatment) lives entirely in `src/css/theme.css`; remove that file to get the greyscale prototypes back.
 
@@ -18,11 +18,18 @@ GitHub Pages publishes from the `docs/` folder on `main`
 (Settings → Pages → Deploy from a branch → `main` / `/docs`).
 
 ## Prototypes
-1. Get a smart meter — `pages/get-a-smart-meter.html`, plus `pages/which-meter.html`
+1. Get a smart meter — `pages/get-a-smart-meter.html` (installation journey; `?mode=business`), plus `pages/which-meter.html`
 2. Is my smart meter working? — `pages/is-my-meter-working.html` (`?start=rts` or `?start=switchup` opens a route)
 3. Energy prices — `pages/energy-prices.html`
-4. Homepage — `pages/home.html`, plus the campaign template `pages/switch-up.html`
-5. Find an answer — `pages/answers.html` (`?q=` runs a search)
+4. Homepage — `pages/home.html` (guided assistant, "Picked for you"), plus the campaign template `pages/switch-up.html`
+5. Find an answer — `pages/answers.html` (`?q=` runs a search, `?topic=` filters)
+6. Real stories — `pages/stories.html` (`?persona=renter|homeowner|older|younger`), plus the template `pages/story.html`
+7. Estimated bills explained — `pages/bills.html`
+
+Version 3 takes in ideas from the ClerksWell 2027 roadmap proposal: installation journey, guided assistant,
+personalised search, real user case studies and education through interaction, plus GA4 event tagging.
+The "Help me find" assistant appears on every page. With Notes on, an event log (bottom left) shows the
+GA4 events each interaction sends.
 
 Module library: `modules/library.html`. Requirements: `requirements/requirements.md`.
 
@@ -35,8 +42,9 @@ navigator (top bar with the Notes switch) and the previous/next footer live in `
 
 Shared data lives in `src/js/data.js`: suppliers, the price cap record (Ofgem, July to December 2026),
 DESNZ smart meter figures (end June 2026) and 29 sample answers drafted from the live FAQs.
-Generic behaviour is in `src/js/wireframe.js`; prototype behaviour in `src/js/prototypes.js`.
+Generic behaviour is in `src/js/wireframe.js`; prototype behaviour in `src/js/prototypes.js`; V3 additions
+(tracking, assistant, personalisation, journey, stories, bills simulator) in `src/js/roadmap.js`.
 
 ## Status
-V2, designed prototypes for internal review. Smart Energy GB's own header and footer are replaced by a prototype navigator. Notes are off by default; switch "Notes on" in the top bar
+V3, designed prototypes for internal review. Smart Energy GB's own header and footer are replaced by a prototype navigator. Notes are off by default; switch "Notes on" in the top bar
 to show what each prototype proposes and why, plus in-page annotations.

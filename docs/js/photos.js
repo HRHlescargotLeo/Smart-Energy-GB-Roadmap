@@ -51,7 +51,10 @@
     'photo: smart meter with in-home display': { src: P.smartMeter, fit: 'contain' },
     'photo: display type a, screens labelled': { src: P.ihdA, fit: 'contain' },
     'photo: display type b, screens labelled': { src: P.ihdB },
-    'photo: prepay display, balance screen': { src: P.ihdPrepay, fit: 'contain' }
+    'photo: prepay display, balance screen': { src: P.ihdPrepay, fit: 'contain' },
+    'real stories': { src: P.johnny },
+    'estimated bills': { src: P.bills },
+    'illustration: estimated and actual bills': { src: P.bills }
   };
 
   function apply(el, m) {

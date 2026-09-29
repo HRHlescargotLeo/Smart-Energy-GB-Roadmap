@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real stories — Smart Energy GB prototype</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body>
+  <!-- @@include header.html -->
+
+  <main id="main" class="flush">
+    <aside class="proposal" aria-label="About this prototype">
+      <div class="container">
+        <p class="proposal-eyebrow">Prototype 6 of 7 · Real stories</p>
+        <div class="proposal-grid">
+          <div><h2>What we're proposing</h2><p>A home for case studies from real smart meter owners, each built around a worry people actually have and tagged to the groups in the ClerksWell 2027 roadmap proposal: renters, homeowners, older and younger people. Visitors filter to someone like them. Each story uses the same template, with cuts for social and email, so one interview feeds every channel.</p></div>
+          <div><h2>Why</h2><p>The people Smart Energy GB still needs to reach are often sceptical because of what they've heard from friends or read online. Today the site has one-line quotes with a first name and a Facebook icon, and a reviews page. A longer story from someone in the same situation answers the worry in a way a fact sheet can't.</p></div>
+        </div>
+        <p class="proposal-foot">Story outlines are placeholders for real interviews. The short quotes are taken from the live homepage.</p>
+      </div>
+    </aside>
+
+    <!-- Intro (R60) -->
+    <div class="page-head">
+      <div class="container">
+        <h1>Real stories from smart meter owners</h1>
+        <p class="lead">People who had the same questions you might have, and what happened when they got a smart meter.</p>
+        <div class="row topic-chips" role="group" aria-label="Show stories from" data-persona-chips>
+          <button type="button" class="chip" aria-pressed="true" data-persona="all">Everyone</button>
+          <button type="button" class="chip" aria-pressed="false" data-persona="renter">Renters</button>
+          <button type="button" class="chip" aria-pressed="false" data-persona="homeowner">Homeowners</button>
+          <button type="button" class="chip" aria-pressed="false" data-persona="older">Older people</button>
+          <button type="button" class="chip" aria-pressed="false" data-persona="younger">Younger people</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:2rem">
+      <!-- Story cards (R60, R61) -->
+      <section aria-labelledby="st-title">
+        <h2 class="section-title" id="st-title">Stories</h2>
+        <p class="result-count" data-persona-count aria-live="polite"></p>
+        <div class="story-grid" data-story-grid>
+          <a class="story-card" href="~/pages/story.html" data-personas="renter younger">
+            <span class="wf-placeholder ratio-4-3">Photo: renter at home, from interview</span>
+            <span class="story-tags"><span class="badge">Renter</span><span class="badge">Younger</span></span>
+            <span class="story-title">"I didn't think I was allowed one"</span>
+            <span class="story-who">[First name], rents a flat in [town]</span>
+          </a>
+          <a class="story-card" href="#" data-personas="homeowner">
+            <span class="wf-placeholder ratio-4-3">Photo: homeowner, from interview</span>
+            <span class="story-tags"><span class="badge">Homeowner</span></span>
+            <span class="story-title">"I wanted to see where the money was going"</span>
+            <span class="story-who">[First name], owns a house in [town]</span>
+          </a>
+          <a class="story-card" href="#" data-personas="older homeowner">
+            <span class="wf-placeholder ratio-4-3">Photo: older homeowner, from interview</span>
+            <span class="story-tags"><span class="badge">Older</span><span class="badge">Homeowner</span></span>
+            <span class="story-title">"I'd read things online that put me off"</span>
+            <span class="story-who">[First name], [age], lives in [town]</span>
+          </a>
+          <a class="story-card" href="#" data-personas="younger renter">
+            <span class="wf-placeholder ratio-4-3">Photo: shared house, from interview</span>
+            <span class="story-tags"><span class="badge">Renter</span><span class="badge">Younger</span></span>
+            <span class="story-title">"Our shared house kept arguing about the bills"</span>
+            <span class="story-who">[First names], share a house in [town]</span>
+          </a>
+          <a class="story-card" href="#" data-personas="older">
+            <span class="wf-placeholder ratio-4-3">Photo: older person with display, from interview</span>
+            <span class="story-tags"><span class="badge">Older</span></span>
+            <span class="story-title">"I was worried it would be complicated"</span>
+            <span class="story-who">[First name], [age], lives alone in [town]</span>
+          </a>
+          <a class="story-card" href="#" data-personas="homeowner younger">
+            <span class="wf-placeholder ratio-4-3">Photo: young family, from interview</span>
+            <span class="story-tags"><span class="badge">Homeowner</span><span class="badge">Younger</span></span>
+            <span class="story-title">"Our first home, and our first real energy bill"</span>
+            <span class="story-who">[First names], bought their first home in [town]</span>
+          </a>
+        </div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Content</span>Headlines are the worry in the person's own words, taken from the interview. Every card opens the same story template; the first shows it filled in. Filters can be linked to directly, for example from the renting page or the guided assistant.</p>
+      </section>
+
+      <!-- Short quotes from the live homepage (R62) -->
+      <section aria-labelledby="q-title">
+        <h2 class="section-title" id="q-title">In their own words</h2>
+        <div class="quote-grid" data-quote-grid>
+          <blockquote class="quote-card" data-personas="older"><p>"Best thing I ever installed was my smart meter. At 71, I don't have to climb a step ladder to read the meter and send readings."</p><footer>Joy</footer></blockquote>
+          <blockquote class="quote-card" data-personas="older"><p>"I like that it sends meter readings to my supplier. I'm 63 - from the days before smart meters. If I can use one then others can."</p><footer>Leslie</footer></blockquote>
+          <blockquote class="quote-card" data-personas="all"><p>"My smart meter is fantastic. I no longer need to spider dodge in the outside gas meter cupboard to take a meter reading!"</p><footer>Liz</footer></blockquote>
+          <blockquote class="quote-card" data-personas="all"><p>"I don't get estimated bills! My smart meter is spot on with what I pay."</p><footer>Steve</footer></blockquote>
+          <blockquote class="quote-card" data-personas="all"><p>"I simply can't see what's not to like about smart meters! They certainly help my family keep a check on our energy spend."</p><footer>David</footer></blockquote>
+        </div>
+      </section>
+
+      <!-- Share your story (R63) -->
+      <section class="panel surface remind-band" aria-labelledby="share-title">
+        <div>
+          <h2 id="share-title">Got a smart meter story?</h2>
+          <p>Good or bad, we'd like to hear it. We may ask to talk to you for a longer story.</p>
+        </div>
+        <button type="button" class="btn" data-modal-open="share-modal">Share your story</button>
+      </section>
+    </div>
+
+    <!-- Share modal (R63) -->
+    <div class="wf-modal" id="share-modal" role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
+      <div class="wf-modal-panel">
+        <button type="button" class="wf-modal-close" aria-label="Close">&times;</button>
+        <form id="share-form" novalidate>
+          <h2 id="share-modal-title">Share your story</h2>
+          <div class="field"><label for="sh-name">First name</label><input id="sh-name" type="text" required autocomplete="given-name"><p class="field-error" hidden>Enter your first name</p></div>
+          <div class="field"><label for="sh-email">Email address</label><input id="sh-email" type="email" required autocomplete="email"><p class="field-error" hidden>Enter an email address, like name@example.com</p></div>
+          <div class="field"><label for="sh-home">Your home</label><select id="sh-home" required><option value="">Choose one</option><option>I rent</option><option>I own my home</option><option>I live with family</option><option>Other</option></select><p class="field-error" hidden>Choose the option closest to your home</p></div>
+          <div class="field"><label for="sh-story">What happened?</label><textarea id="sh-story" rows="4" required></textarea><p class="field-error" hidden>Tell us a little about your experience</p></div>
+          <div class="field"><label class="check"><input id="sh-consent" type="checkbox" required> Smart Energy GB can contact me about my story</label><p class="field-error" hidden>Tick the box so we can get in touch</p></div>
+          <button type="submit" class="btn">Send my story</button>
+        </form>
+        <div id="share-done" hidden>
+          <h2 tabindex="-1">Thank you</h2>
+          <p>We read every story. If we'd like to feature yours, we'll email you first.</p>
+          <button type="button" class="btn wf-modal-close">Close</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+  <script src="~/js/data.js"></script>
+  <script src="~/js/wireframe.js"></script>
+  <script src="~/js/prototypes.js"></script>
+  <script src="~/js/roadmap.js"></script>
+  <script src="~/js/photos.js"></script>
+</body>
+</html>

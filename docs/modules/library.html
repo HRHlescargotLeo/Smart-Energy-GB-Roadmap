@@ -22,6 +22,8 @@
           <li><a href="../pages/energy-prices.html" data-proto="energy-prices"><span class="n">3</span> Prices</a></li>
           <li><a href="../pages/home.html" data-proto="home switch-up"><span class="n">4</span> Homepage</a></li>
           <li><a href="../pages/answers.html" data-proto="answers"><span class="n">5</span> Answers</a></li>
+          <li><a href="../pages/stories.html" data-proto="stories story"><span class="n">6</span> Stories</a></li>
+          <li><a href="../pages/bills.html" data-proto="bills"><span class="n">7</span> Bills</a></li>
         </ul>
       </nav>
       <button type="button" class="notes-toggle" role="switch" aria-checked="false" data-notes-toggle>
@@ -35,7 +37,7 @@
   <main id="main">
     <div class="container">
       <h1>Module library</h1>
-      <p class="lead">New components introduced by the five prototypes, each shown once, with where it's used. Existing site modules (accordions, carousels, campaign panels) aren't repeated here.</p>
+      <p class="lead">New components introduced by the prototypes, each shown once, with where it's used. Existing site modules (accordions, carousels, campaign panels) aren't repeated here.</p>
 
       <!-- Supplier finder (R12, R13) -->
       <section>
@@ -117,9 +119,40 @@
           <p class="wf-note" data-note="6"><span class="wf-note-label">Used in</span>Find an answer, and on topic pages in the real build. One answer, written once, shown wherever it's relevant.</p>
         </div>
       </section>
+      <!-- Guided assistant (R64) -->
+      <section>
+        <h2 class="section-title">Guided assistant</h2>
+        <div class="lib-item">
+          <div class="assistant" data-assistant id="assistant-lib"></div>
+          <p class="wf-note" data-note="7"><span class="wf-note-label">Used in</span>Homepage, and the "Help me find the right thing" button on every page. Five fixed questions, fixed routing, one GA4 event per answer.</p>
+        </div>
+      </section>
+
+      <!-- Story card (R60) -->
+      <section>
+        <h2 class="section-title">Story card</h2>
+        <div class="lib-item">
+          <div class="story-grid" style="grid-template-columns:minmax(0,320px)"><a class="story-card" href="#"><span class="wf-placeholder ratio-4-3">Photo: from interview</span><span class="story-tags"><span class="badge">Renter</span></span><span class="story-title">"The worry, in their words"</span><span class="story-who">[First name], [where they live]</span></a></div>
+          <p class="wf-note" data-note="8"><span class="wf-note-label">Used in</span>Real stories, story template (more stories), and wherever a matching story helps, such as the renting answer.</p>
+        </div>
+      </section>
     </div>
   </main>
 
+  <!-- Guided assistant launcher, on every page (R64) -->
+  <button type="button" class="assistant-launch" data-modal-open="assistant-modal">Help me find<span class="al-more"> the right thing</span></button>
+  <div class="wf-modal" id="assistant-modal" role="dialog" aria-modal="true" aria-labelledby="assistant-modal-title">
+    <div class="wf-modal-panel">
+      <button type="button" class="wf-modal-close" aria-label="Close">&times;</button>
+      <h2 id="assistant-modal-title">Let's find the right thing for you</h2>
+      <div class="assistant" data-assistant id="assistant-modal-body"></div>
+    </div>
+  </div>
+  <!-- GA4 event log, visible with Notes on (R67) -->
+  <aside class="event-log" data-event-log aria-label="Tracking events (prototype)" hidden>
+    <p class="event-log-h">GA4 events <span>prototype</span></p>
+    <ol data-event-list></ol>
+  </aside>
   <!-- Prototype pager (replaces Smart Energy GB's own footer) -->
   <footer class="proto-footer">
     <div class="container">
@@ -131,6 +164,7 @@
   <script src="../js/data.js"></script>
   <script src="../js/wireframe.js"></script>
   <script src="../js/prototypes.js"></script>
+  <script src="../js/roadmap.js"></script>
   <script src="../js/photos.js"></script>
 </body>
 </html>

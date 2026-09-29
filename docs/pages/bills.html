@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estimated bills, explained — Smart Energy GB prototype</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Prototype navigator (replaces Smart Energy GB's own header, R01) -->
+  <header class="sticky site-header proto-nav">
+    <div class="container proto-nav-row">
+      <a class="proto-home" href="../index.html" aria-label="Smart Energy GB prototypes, overview">Smart Energy GB <span>prototypes</span></a>
+      <nav aria-label="Prototypes">
+        <ul class="proto-links">
+          <li><a href="../index.html" data-proto="index">Overview</a></li>
+          <li><a href="../pages/get-a-smart-meter.html" data-proto="get-a-smart-meter which-meter"><span class="n">1</span> Get one</a></li>
+          <li><a href="../pages/is-my-meter-working.html" data-proto="is-my-meter-working"><span class="n">2</span> Is it working?</a></li>
+          <li><a href="../pages/energy-prices.html" data-proto="energy-prices"><span class="n">3</span> Prices</a></li>
+          <li><a href="../pages/home.html" data-proto="home switch-up"><span class="n">4</span> Homepage</a></li>
+          <li><a href="../pages/answers.html" data-proto="answers"><span class="n">5</span> Answers</a></li>
+          <li><a href="../pages/stories.html" data-proto="stories story"><span class="n">6</span> Stories</a></li>
+          <li><a href="../pages/bills.html" data-proto="bills"><span class="n">7</span> Bills</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="notes-toggle" role="switch" aria-checked="false" data-notes-toggle>
+        <span class="notes-track" aria-hidden="true"><span class="notes-thumb"></span></span>
+        <span class="notes-label">Notes off</span>
+      </button>
+    </div>
+  </header>
+
+
+  <main id="main" class="flush">
+    <aside class="proposal" aria-label="About this prototype">
+      <div class="container">
+        <p class="proposal-eyebrow">Prototype 7 of 7 · Estimated bills, explained</p>
+        <div class="proposal-grid">
+          <div><h2>What we're proposing</h2><p>An interactive scenario that shows what happens when bills are estimated and you use more than your supplier thinks. People choose a situation they recognise, move two sliders and watch the gap between what they've paid and what they've used grow into a catch-up bill. Then they see the same months with a smart meter. It comes from "Education through interaction" in the ClerksWell 2027 roadmap proposal.</p></div>
+          <div><h2>Why</h2><p>Estimated bills and catch-up charges are one of the most concrete reasons to get a smart meter, and one of the hardest to explain in a paragraph. The live site says smart meters mean "no more estimated bills" without showing what an estimated bill costs you. A scenario people can play with makes the point on its own, and each change is a trackable signal of what worries people most.</p></div>
+        </div>
+        <p class="proposal-foot">Costs use the current Ofgem price cap from the shared price record. Scenarios are illustrative, not predictions for any household.</p>
+      </div>
+    </aside>
+
+    <!-- Intro (R70) -->
+    <div class="page-head">
+      <div class="container">
+        <h1>What does an estimated bill really cost?</h1>
+        <p class="lead">Without meter readings, your supplier bills you on a guess. If you use more than they guess, the difference catches up with you later. See how it adds up.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:2rem">
+      <!-- Simulator (R70–R72) -->
+      <section aria-labelledby="sim-title" data-simulator>
+        <h2 class="section-title" id="sim-title">Try a situation</h2>
+        <div class="seg" role="radiogroup" aria-label="Choose a situation">
+          <button type="button" role="radio" aria-checked="true" data-scenario="winter">A cold winter</button>
+          <button type="button" role="radio" aria-checked="false" data-scenario="home">Working from home</button>
+          <button type="button" role="radio" aria-checked="false" data-scenario="baby">A new baby</button>
+          <button type="button" role="radio" aria-checked="false" data-scenario="move">Moving house</button>
+        </div>
+        <p class="sim-scenario" data-sim-scenario aria-live="polite"></p>
+
+        <div class="sim-grid">
+          <form class="stack sim-controls" onsubmit="return false">
+            <div class="field">
+              <label for="sim-extra">You actually use <span class="num" data-sim-extra-out>20%</span> more than your supplier estimates</label>
+              <input id="sim-extra" type="range" min="0" max="50" step="5" value="20">
+            </div>
+            <div class="field">
+              <label for="sim-months">Months until a real reading is sent: <span class="num" data-sim-months-out>6</span></label>
+              <input id="sim-months" type="range" min="1" max="12" step="1" value="6">
+            </div>
+            <div class="sim-outcome panel" aria-live="polite">
+              <p class="eyebrow">Without a smart meter</p>
+              <p class="cap-figure"><span data-sim-catchup>£0</span><small> catch-up bill</small></p>
+              <p data-sim-explain></p>
+            </div>
+            <div class="sim-outcome smart panel" aria-live="polite">
+              <p class="eyebrow">With a smart meter</p>
+              <p class="cap-figure">£0<small> catch-up bill</small></p>
+              <p data-sim-smart></p>
+            </div>
+          </form>
+
+          <figure class="sim-chart" data-sim-chart>
+            <figcaption><strong>Paid and used, month by month</strong><span class="wf-meta"> Running totals, without a smart meter</span></figcaption>
+            <ul class="sim-legend" aria-hidden="true">
+              <li><span class="lg lg-paid"></span>Paid on estimated bills</li>
+              <li><span class="lg lg-used"></span>Energy actually used</li>
+            </ul>
+            <div class="sim-plot" data-sim-plot></div>
+            <div class="sim-tip" data-sim-tip hidden></div>
+          </figure>
+        </div>
+        <details class="sim-table">
+          <summary>Show these figures as a table</summary>
+          <div class="tbl-scroll"><table class="rates"><thead><tr><th scope="col">Month</th><th scope="col">Paid so far</th><th scope="col">Used so far</th><th scope="col">Gap</th></tr></thead><tbody data-sim-rows></tbody></table></div>
+        </details>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Each scenario sets the two sliders to a plausible starting point; people can then move them. Hover or tap the chart to see any month. Every scenario change and slider move is a trackable event, so Smart Energy GB can see which situations people explore most.</p>
+        <p class="wf-note query" data-note="2"><span class="wf-note-label">Open question</span>Would Smart Energy GB want real, anonymised examples from suppliers or Citizens Advice to anchor the scenarios? That would make the figures harder to dismiss.</p>
+      </section>
+
+      <section class="panel surface callout-band" aria-labelledby="sim-cta">
+        <div>
+          <h2 id="sim-cta">Get bills based on what you really use</h2>
+          <p>A smart meter sends readings automatically, so your bills match your use month by month.</p>
+        </div>
+        <a class="btn" href="../pages/get-a-smart-meter.html">Get a smart meter</a>
+      </section>
+    </div>
+  </main>
+
+  <!-- Guided assistant launcher, on every page (R64) -->
+  <button type="button" class="assistant-launch" data-modal-open="assistant-modal">Help me find<span class="al-more"> the right thing</span></button>
+  <div class="wf-modal" id="assistant-modal" role="dialog" aria-modal="true" aria-labelledby="assistant-modal-title">
+    <div class="wf-modal-panel">
+      <button type="button" class="wf-modal-close" aria-label="Close">&times;</button>
+      <h2 id="assistant-modal-title">Let's find the right thing for you</h2>
+      <div class="assistant" data-assistant id="assistant-modal-body"></div>
+    </div>
+  </div>
+  <!-- GA4 event log, visible with Notes on (R67) -->
+  <aside class="event-log" data-event-log aria-label="Tracking events (prototype)" hidden>
+    <p class="event-log-h">GA4 events <span>prototype</span></p>
+    <ol data-event-list></ol>
+  </aside>
+  <!-- Prototype pager (replaces Smart Energy GB's own footer) -->
+  <footer class="proto-footer">
+    <div class="container">
+      <nav class="proto-pager" aria-label="Previous and next prototype" data-proto-pager></nav>
+      <p class="wf-meta">Prepared by ClerksWell · Prototypes for discussion · Sample data where marked · Photography © Smart Energy GB</p>
+    </div>
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/wireframe.js"></script>
+  <script src="../js/prototypes.js"></script>
+  <script src="../js/roadmap.js"></script>
+  <script src="../js/photos.js"></script>
+</body>
+</html>

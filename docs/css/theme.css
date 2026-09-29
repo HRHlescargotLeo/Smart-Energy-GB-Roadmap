@@ -396,3 +396,105 @@ header.proto-nav { background: #fff; border-bottom: 4px solid var(--segb-green);
 .proto-try { color: var(--segb-heading); }
 .hub-notes .panel.surface { border-top: 6px solid var(--segb-green); }
 .finder-status:empty { display: none; }
+
+/* Coloured panels: these components also carry .panel.surface, whose
+   alabaster fill otherwise wins on specificity and leaves white text on grey. */
+.panel.surface.callout-band { background: var(--segb-green); border-color: var(--segb-green); color: #fff; }
+.panel.surface.meter-result { background: var(--segb-green); border-color: var(--segb-green); color: #fff; }
+.panel.surface.remind-band { background: var(--segb-sky); border-color: var(--segb-sky); }
+.panel.surface.reading-tip { background: var(--segb-yellow-tint); border-color: var(--segb-yellow-tint); border-left: 6px solid var(--segb-yellow); }
+
+/* --------------------------------------------------------------------------
+   V3: additions from the ClerksWell 2027 roadmap proposal
+   -------------------------------------------------------------------------- */
+/* Installation journey */
+.journey-nav { border: 0; border-top: 4px solid var(--segb-green); background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 0.9rem 1.25rem; }
+.journey-nav a { color: var(--segb-green); text-decoration: none; }
+.journey-nav a:hover { text-decoration: underline; }
+.jn-num { background: var(--segb-green); color: #fff; border: 0; padding-top: 0.1rem; }
+.jn-bar { background: var(--segb-sky); border-radius: 0; height: 10px; }
+.jn-bar span { background: var(--segb-green); }
+.checks .check { font-weight: 400; color: var(--segb-heading); }
+.checks input[type="checkbox"] { width: 1.3rem; height: 1.3rem; }
+.checklist h3 { margin-bottom: 0; }
+.dt-step { border: 0; background: var(--segb-alabaster); color: var(--segb-heading); font-weight: 600; font-size: 1.0625rem; padding: 0.9rem 1.1rem 0.8rem; }
+.dt-step[aria-expanded="true"] { background: var(--segb-green); color: #fff; }
+.dt-num { border: 0; background: #fff; color: var(--segb-green); font-weight: 700; padding-top: 0.1rem; }
+.dt-body { border-left: 4px solid var(--segb-green); margin-left: 1.9rem; padding: 0.75rem 1rem; }
+
+/* Guided assistant */
+.assistant-band { border: 0; background: var(--segb-sky); padding: 2rem; }
+.assistant-intro h2 { font-weight: 400; font-size: clamp(1.625rem, 2.6vw, 2rem); color: var(--segb-ink); }
+.assistant-intro p { color: var(--segb-ink); }
+.assistant-intro .eyebrow { color: var(--segb-blue); }
+.assistant-band .assistant { background: #fff; padding: 1.5rem; }
+.assistant-bar { background: var(--segb-sky); border-radius: 0; }
+.assistant-bar span { background: var(--segb-green); }
+.assistant-q legend { font-weight: 400; font-size: 1.5rem; color: var(--segb-heading); }
+.assistant-opt { background: var(--segb-heading); color: #fff; border: 0; font-size: 1.0625rem; padding: 0.85rem 1.1rem 0.75rem; }
+.assistant-opt:hover { background: var(--segb-green); color: #fff; }
+.assistant h3 { font-weight: 400; font-size: 1.5rem; }
+.route-card { border: 0; border-left: 6px solid var(--segb-green); background: var(--segb-alabaster); text-decoration: none; }
+.route-card:hover { background: var(--segb-green-tint); }
+.route-title { color: var(--segb-green); font-size: 1.125rem; }
+.route-text { color: var(--segb-text); }
+.picked { border: 0; border-top: 6px solid var(--segb-green); background: var(--segb-green-tint); padding: 1.5rem; }
+.picked h2 { font-weight: 400; font-size: 1.75rem; }
+.picked .route-card { background: #fff; }
+.assistant-launch { background: var(--segb-green); color: #fff; border: 2px solid #fff; border-radius: 0; font-weight: 700; padding: 0.8rem 1.25rem 0.7rem; box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+.assistant-launch:hover { background: var(--segb-green-hover); }
+
+/* Stories */
+.story-card { border: 0; background: var(--segb-alabaster); text-decoration: none; }
+.story-card:hover { background: var(--segb-green-tint); }
+.story-card .badge, .story-hero .badge { border-color: var(--segb-green); color: var(--segb-green); background: #fff; }
+.story-title { color: var(--segb-heading); font-weight: 400; font-size: 1.375rem; }
+.story-who { color: var(--segb-text); }
+.quote-card { border: 5px solid var(--segb-pink); border-radius: 10px; }
+.quote-card p { color: var(--segb-heading); font-size: 1.0625rem; }
+.quote-card footer { color: var(--segb-heading); }
+.story-hero { background: var(--segb-green); border: 0; padding: 0; }
+.story-hero-grid { gap: 0; align-items: stretch; }
+.story-hero-grid > .stack { padding: 2.5rem 2.5rem 2.5rem 0; align-content: center; }
+.story-hero h1 { color: #fff; font-weight: 700; }
+.story-hero .lead, .story-hero .wf-meta, .story-hero .wf-meta a { color: #fff; }
+.story-hero .wf-placeholder { min-height: 320px; aspect-ratio: auto; }
+@media (max-width: 900px) { .story-hero-grid > .stack { padding: 2rem 0; } }
+.story-facts div { border-top: 4px solid var(--segb-green); }
+.story-body h2 { font-weight: 400; font-size: 1.75rem; }
+.pull-quote { border-left: 6px solid var(--segb-pink); color: var(--segb-heading); font-weight: 400; font-size: 1.625rem; }
+.story-side .panel.surface { border-top: 6px solid var(--segb-green); }
+.story-side-h { font-weight: 400; font-size: 1.5rem; }
+
+/* Bills simulator */
+.sim-scenario { color: var(--segb-heading); font-size: 1.1875rem; }
+.sim-outcome { border: 0; background: var(--segb-alabaster); border-left: 6px solid var(--segb-pink); }
+.sim-outcome.smart { border-left-color: var(--segb-green); background: var(--segb-green-tint); }
+.sim-outcome .cap-figure { color: var(--segb-heading); }
+.sim-chart { border: 0; background: #fff; box-shadow: inset 0 0 0 1px var(--segb-line); }
+.lg-paid { border-color: var(--segb-blue); }
+.lg-used { border-color: var(--segb-pink); }
+.sim-plot .gap { fill: var(--segb-pink-tint); opacity: 1; }
+.sim-plot .ln-paid { stroke: var(--segb-blue); }
+.sim-plot .ln-used { stroke: var(--segb-pink); }
+.sim-plot .pt-paid { fill: var(--segb-blue); }
+.sim-plot .pt-used { fill: var(--segb-pink); }
+.sim-plot .axis { fill: var(--segb-text); font-family: var(--segb-font); }
+.sim-tip { border: 0; border-top: 4px solid var(--segb-green); border-radius: 0; color: var(--segb-heading); }
+.sim-table summary { color: var(--segb-green); }
+
+/* Suggested answer and myth poll */
+.ai-answer { border: 0; border-left: 6px solid var(--segb-green); background: var(--segb-green-tint); padding: 1.5rem 1.75rem; }
+.ai-text { color: var(--segb-heading); font-size: 1.1875rem; }
+.ai-sources { color: var(--segb-text); }
+.myth-poll { color: var(--segb-text); border-top: 1px solid var(--segb-line); padding-top: 0.75rem; }
+
+/* Seven prototypes no longer fit on one line beside the name and switch:
+   put the links on their own row below 1500px. */
+@media (max-width: 1500px) {
+  .proto-nav-row { flex-wrap: wrap; gap: 0 1rem; padding-top: 0.5rem; }
+  .proto-home { order: 1; }
+  .notes-toggle { order: 2; margin-left: auto; }
+  .proto-nav nav { order: 3; flex-basis: 100%; }
+}
+@media (max-width: 600px) { .assistant-launch { padding: 0.6rem 0.9rem 0.5rem; } }

@@ -14,9 +14,9 @@
   <main id="main" class="flush">
     <aside class="proposal" aria-label="About this prototype">
       <div class="container">
-        <p class="proposal-eyebrow">Prototype 4 of 5 · A homepage that sorts people by task</p>
+        <p class="proposal-eyebrow">Prototype 4 of 7 · A homepage that sorts people by task</p>
         <div class="proposal-grid">
-          <div><h2>What we're proposing</h2><p>A homepage built around the three reasons people arrive: they want a smart meter, they have one and want to use it, or something isn't working. Under those sit the current campaign, a search box, up-to-date national figures and owners' stories. Each campaign gets its own landing page from a reusable template, shown here with Switch Up, Stay Smart.</p></div>
+          <div><h2>What we're proposing</h2><p>A homepage built around the three reasons people arrive: they want a smart meter, they have one and want to use it, or something isn't working. For anyone still unsure, a short guided assistant from the ClerksWell 2027 roadmap proposal asks five questions and points them to the right place, then the homepage remembers the answers and puts the most relevant content first. Under those sit the current campaign, a search box, national figures and owners' stories. Each campaign gets its own landing page from a reusable template, shown here with Switch Up, Stay Smart.</p></div>
           <div><h2>Why</h2><p>Today's homepage has six question tiles and six green modules that all look alike, with "Find out more" seven times. The newest campaign, Switch Up, Stay Smart, isn't on it at all, even though government now expects Smart Energy GB to encourage people to accept the 4G upgrade. And some pages still quote "over 60% of homes" when government figures now show 72% of meters are smart or advanced.</p></div>
         </div>
       </div>
@@ -44,15 +44,33 @@
 
     <div class="container" style="padding-top:2.5rem">
 
+      <!-- Picked for you, from the guided assistant (R66) -->
+      <section class="picked" aria-labelledby="picked-title" data-picked hidden>
+        <div class="row between"><h2 id="picked-title">Picked for you</h2><button type="button" class="btn-link" data-picked-clear>Clear my answers</button></div>
+        <div class="picked-list" data-picked-list></div>
+      </section>
+
       <!-- Three doors (R41) -->
       <section aria-labelledby="doors-title">
         <h2 class="visually-hidden" id="doors-title">What do you need?</h2>
         <div class="doors">
-          <a class="door" href="~/pages/get-a-smart-meter.html"><span class="door-kicker">I'd like one</span><span class="door-title">Get a smart meter</span><span class="door-text">Three steps, from finding your supplier to the day of your installation.</span></a>
+          <a class="door" href="~/pages/get-a-smart-meter.html"><span class="door-kicker">I'd like one</span><span class="door-title">Get a smart meter</span><span class="door-text">From finding your supplier to the first weeks after installation.</span></a>
           <a class="door" href="~/pages/energy-prices.html"><span class="door-kicker">I've got one</span><span class="door-title">Make the most of it</span><span class="door-text">Prices, peak times and how to use your in-home display.</span></a>
           <a class="door" href="~/pages/is-my-meter-working.html"><span class="door-kicker">Something's not right</span><span class="door-title">Is my smart meter working?</span><span class="door-text">A quick checker for blank displays, estimated bills and replacements.</span></a>
         </div>
       </section>
+
+      <!-- Guided assistant (R64–R66) -->
+      <section class="assistant-band" aria-labelledby="ga-title">
+        <div class="assistant-intro">
+          <p class="eyebrow">Not sure where to start?</p>
+          <h2 id="ga-title">Answer five quick questions</h2>
+          <p>We'll point you to what's most useful for you. It takes under a minute, and you can skip any question.</p>
+        </div>
+        <div class="assistant" data-assistant id="assistant-home"></div>
+      </section>
+      <p class="wf-note" data-note="5"><span class="wf-note-label">Behaviour</span>A lightweight guided assistant, not AI, with fixed questions and routing, as set out in the 2027 roadmap proposal. Every answer sends a GA4 event (switch Notes on to see them in the event log, bottom left). The answers are remembered for the visit, so the homepage then shows "Picked for you" and moves the most relevant door first. The same assistant opens from the "Help me find" button on every page.</p>
+      <p class="wf-note query" data-note="6"><span class="wf-note-label">Open question</span>Should answers also feed audiences for paid media, for example people who say they rent and haven't got a smart meter? That needs a consent decision and a line in the privacy notice.</p>
 
       <!-- Search (R44) -->
       <section class="panel surface home-search" aria-labelledby="hs-title">
@@ -106,7 +124,8 @@
           <div class="carousel-controls"><button type="button" class="carousel-arrow" data-dir="prev" aria-label="Previous story">&#8249;</button><button type="button" class="carousel-arrow" data-dir="next" aria-label="Next story">&#8250;</button></div>
           <div class="carousel-indicators"></div>
         </div>
-        <p class="wf-note" data-note="4"><span class="wf-note-label">Content</span>Quotes are from the live homepage. We'd add each person's situation so visitors can find someone like them.</p>
+        <p class="row"><a class="btn btn-secondary" href="~/pages/stories.html">Read real stories</a></p>
+        <p class="wf-note" data-note="4"><span class="wf-note-label">Content</span>Quotes are from the live homepage. Longer case studies, tagged to renters, homeowners, older and younger people, live on the stories page (prototype 6).</p>
       </section>
 
       <!-- Other campaigns, with labels that say where they go (R47) -->
@@ -115,7 +134,7 @@
         <div class="grid grid-3">
           <div class="card"><div class="wf-placeholder ratio-16-9">Photo: Einstein energy tips</div><h3 class="card-title">Energy saving tips</h3><p class="card-text">Simple changes around the home, and what they could save.</p><a class="card-link" href="#">See this season's tips</a></div>
           <div class="card"><div class="wf-placeholder ratio-16-9">Photo: Johnny Vegas installation</div><h3 class="card-title">What happens at an installation</h3><p class="card-text">Follow an installation from knock on the door to first reading.</p><a class="card-link" href="#">Watch Johnny's installation</a></div>
-          <div class="card"><div class="wf-placeholder ratio-16-9">Photo: prepay smart meter</div><h3 class="card-title">Prepay smart meters</h3><p class="card-text">Top up online and see your balance at a glance.</p><a class="card-link" href="#">How prepay smart meters work</a></div>
+          <div class="card"><div class="wf-placeholder ratio-16-9">Illustration: estimated and actual bills</div><h3 class="card-title">What does an estimated bill cost?</h3><p class="card-text">Try a situation and see how a catch-up bill builds up.</p><a class="card-link" href="~/pages/bills.html">Try the bill explainer</a></div>
         </div>
       </section>
     </div>
@@ -125,6 +144,7 @@
   <script src="~/js/data.js"></script>
   <script src="~/js/wireframe.js"></script>
   <script src="~/js/prototypes.js"></script>
+  <script src="~/js/roadmap.js"></script>
   <script src="~/js/photos.js"></script>
 </body>
 </html>
