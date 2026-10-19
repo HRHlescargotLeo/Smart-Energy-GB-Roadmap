@@ -1,4 +1,4 @@
-# Smart Energy GB — website improvement prototypes (V3)
+# Smart Energy GB — website improvement prototypes (V4)
 
 Seven clickable prototypes for improvements to smartenergygb.org, prepared by ClerksWell following the
 phase 1 review (28 September 2026). The Smart Energy GB design layer (colours, Hind type, buttons, panels,
@@ -31,6 +31,16 @@ personalised search, real user case studies and education through interaction, p
 The "Help me find" assistant appears on every page. With Notes on, an event log (bottom left) shows the
 GA4 events each interaction sends.
 
+## Quick wins (V4)
+A second tab, `quick-wins/index.html`, shows 28 smaller changes, each on its own page
+(`quick-wins/<name>.html`) with today's version beside the change, why it's worth doing, and a link to the
+big prototype it belongs to where there is one. Each one can be done on its own. A shortlist on the overview
+(kept in the browser) can be copied into an email. No estimates are shown, by design.
+
+The quick win pages are generated from a content file by a script kept outside the repo; edit
+`src/quick-wins/*.html` directly if you need a quick change. Behaviour is in `src/js/quick-wins.js`;
+the tab switch sits at the top of both navigators (`src/includes/header.html`, `header-qw.html`).
+
 Module library: `modules/library.html`. Requirements: `requirements/requirements.md`.
 
 ## Build
@@ -46,5 +56,5 @@ Generic behaviour is in `src/js/wireframe.js`; prototype behaviour in `src/js/pr
 (tracking, assistant, personalisation, journey, stories, bills simulator) in `src/js/roadmap.js`.
 
 ## Status
-V3, designed prototypes for internal review. Smart Energy GB's own header and footer are replaced by a prototype navigator. Notes are off by default; switch "Notes on" in the top bar
+V4, designed prototypes and quick wins for internal review. Smart Energy GB's own header and footer are replaced by a prototype navigator. Notes are off by default; switch "Notes on" in the top bar
 to show what each prototype proposes and why, plus in-page annotations.

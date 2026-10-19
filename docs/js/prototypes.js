@@ -31,6 +31,15 @@
   /* --- Query parameters (?supplier=, ?q=, ?start=) ------------------------
      Some hosts strip the query string, so the last clicked link's query is
      also kept in sessionStorage for the page it points to. */
+  /* Links built in script are written relative to pages/. pageHref fixes
+     them up when the script runs on the overview, a module or a quick win. */
+  function pageHref(href) {
+    var path = window.location.pathname;
+    if (/\/pages\/[^\/]*$/.test(path)) return href;
+    if (/\/(quick-wins|modules)\/[^\/]*$/.test(path)) return '../pages/' + href;
+    return 'pages/' + href;
+  }
+  window.segbPageHref = pageHref;
   function currentFile() { return (window.location.pathname.split('/').pop() || 'index.html'); }
   function param(name) {
     var v = null;
@@ -189,7 +198,7 @@
         input.value = s.name;
         track('supplier_select', { supplier: s.name, former_supplier: !!s.now, place: linkMode ? 'homepage' : 'get-a-smart-meter' });
         if (linkMode) {
-          var href = 'get-a-smart-meter.html?supplier=' + encodeURIComponent(s.id);
+          var href = pageHref('get-a-smart-meter.html?supplier=' + encodeURIComponent(s.id));
           rememberQuery(href);
           window.location.href = href;
           return;
@@ -287,7 +296,7 @@
       b.addEventListener('click', function () {
         opts.forEach(function (x) { x.setAttribute('aria-checked', x === b ? 'true' : 'false'); });
         var m = METERS[b.getAttribute('data-meter')];
-        out.innerHTML = '<h2>' + esc(m.t) + '</h2><p>' + esc(m.p) + '</p><a class="btn" href="' + m.a[0] + '">' + esc(m.a[1]) + '</a>';
+        out.innerHTML = '<h2>' + esc(m.t) + '</h2><p>' + esc(m.p) + '</p><a class="btn" href="' + pageHref(m.a[0]) + '">' + esc(m.a[1]) + '</a>';
         out.focus();
       });
     });
@@ -358,7 +367,7 @@
       var html = '<div class="result-card kind-' + r.k + '"><span class="badge solid">' + KIND[r.k] + '</span><h3>' + esc(r.t) + '</h3><ul>' +
         r.b.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
       if (r.n) html += '<p>' + esc(r.n) + '</p>';
-      if (r.link) html += '<p><a href="' + r.link[0] + '">' + esc(r.link[1]) + '</a></p>';
+      if (r.link) html += '<p><a href="' + pageHref(r.link[0]) + '">' + esc(r.link[1]) + '</a></p>';
       if (r.contact) {
         html += '<div class="contact-box"><label for="ck-supplier">Who is your energy supplier?</label><select id="ck-supplier"><option value="">Choose your supplier</option>' +
           SUPPLIERS.filter(function (s) { return !s.now; }).map(function (s) { return '<option value="' + s.id + '">' + esc(s.name) + '</option>'; }).join('') +
@@ -718,7 +727,7 @@
       var b = e.target.closest('[data-poll]'); if (!b) return;
       var card = b.closest('[data-myth]');
       track('myth_poll', { myth: card.getAttribute('data-myth'), response: b.getAttribute('data-poll') });
-      b.closest('.myth-poll').innerHTML = b.getAttribute('data-poll') === 'not-yet' ? '<span role="status">Thanks. <a href="stories.html">Hear from people who felt the same</a>.</span>' : '<span role="status">Thanks for telling us.</span>';
+      b.closest('.myth-poll').innerHTML = b.getAttribute('data-poll') === 'not-yet' ? '<span role="status">Thanks. <a href="' + pageHref('stories.html') + '">Hear from people who felt the same</a>.</span>' : '<span role="status">Thanks for telling us.</span>';
     });
     var t0 = param('topic');
     if (t0 && $('[data-topic="' + t0 + '"]', chipsHost)) { topic = t0; $all('[data-topic]', chipsHost).forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-topic') === t0 ? 'true' : 'false'); }); }

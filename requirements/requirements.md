@@ -1,4 +1,4 @@
-# Smart Energy GB — prototype requirements (V1)
+# Smart Energy GB — prototype requirements (V4)
 
 Source: ClerksWell phase 1 review of smartenergygb.org and five comparator sites (28 Sep 2026).
 Idea numbers (#nn) refer to the Opportunities page. These are ClerksWell proposals, not
@@ -82,3 +82,10 @@ Source: "ClerksWell x Smart Energy GB 2027 Roadmap Proposal" (project file, 29 S
 
 ### Not prototyped
 - Project 1 Ember implementation, Project 3 CMS AI enhancement (PDF to page, AI metadata, SEO and GA4 reporting agents): back-office or delivery work, outside the public site.
+
+## V4 — Quick wins tab
+- R80 A second tab ("Quick wins") sits beside "Big ideas" in the prototype navigator.
+- R81 Each of the 28 quick wins has its own page: today, the change, a before and after demonstration (today, with the change, or both), and why it's worth doing.
+- R82 Each quick win stands alone; where it is a slice of a big prototype, the page links to it.
+- R83 No estimates of effort, cost or impact appear anywhere in the model.
+- R84 A shortlist (kept in the browser) collects chosen quick wins on the overview, with copy and clear; adding, removing and copying are GA4 events.
