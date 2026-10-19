@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Use the brand colours to signpost — Smart Energy GB quick win</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body class="qw-page">
+  <!-- @@include header-qw.html -->
+
+  <main id="main" class="flush">
+    <div class="page-head qw-head">
+      <div class="container">
+        <p class="wf-meta"><a href="~/quick-wins/index.html">Quick wins</a> › Look and feel</p>
+        <p class="qw-kicker">Quick win 28 of 28</p>
+        <h1>Use the brand colours to signpost</h1>
+        <div class="qw-summary">
+          <div class="qw-today"><h2>Today</h2><p>The stylesheet already defines blue, pink, purple and yellow brand colours, but pages are almost all green and grey.</p></div>
+          <div class="qw-change"><h2>The change</h2><p>Give a few sections an accent from the existing palette, such as prepay, small business and help, used for tags, icons and page headings.</p></div>
+        </div>
+        <div class="qw-actions">
+          <button type="button" class="btn btn-secondary qw-shortlist" data-shortlist="brand-accents" aria-pressed="false">Add to shortlist</button>
+          <a class="qw-shortlist-link" href="~/quick-wins/index.html#shortlist" data-shortlist-count>Your shortlist</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Before and after -->
+    <section class="qw-demo" data-ba aria-labelledby="ba-title">
+      <div class="container">
+        <div class="qw-demo-head">
+          <h2 class="section-title" id="ba-title">See the difference</h2>
+          <div class="seg" role="radiogroup" aria-label="Show">
+            <button type="button" role="radio" aria-checked="false" data-ba-show="before">Today</button>
+            <button type="button" role="radio" aria-checked="false" data-ba-show="after">With the change</button>
+            <button type="button" role="radio" aria-checked="true" data-ba-show="both">Both</button>
+          </div>
+        </div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Switch between today and the change, or see both together. "Today" is a simplified drawing of the live site, not a screenshot. Choosing a view and adding to the shortlist are tracked as events.</p>
+        <div class="ba-panes" data-ba-mode="both">
+          <div class="ba-pane" data-ba-pane="before">
+            <p class="ba-label">Today</p>
+            <div class="ba-frame">
+              <div class="row qw-tags"><span class="qw-tag green">Prepay</span><span class="qw-tag green">Small business</span><span class="qw-tag green">Help and support</span></div>
+            </div>
+          </div>
+          <div class="ba-pane" data-ba-pane="after">
+            <p class="ba-label ba-label-after">With the change</p>
+            <div class="ba-frame">
+              <div class="row qw-tags"><span class="qw-tag purple">Prepay</span><span class="qw-tag blue">Small business</span><span class="qw-tag pink">Help and support</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qw-why" aria-labelledby="why-title">
+      <div class="container">
+        <h2 id="why-title">Why it's worth doing</h2>
+        <p>Colour helps people recognise where they are, using colours Smart Energy GB already owns.</p>
+        <p class="qw-note"><strong>Good to know:</strong> Each accent passes WCAG AA contrast with white text.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- @@include footer.html -->
+  <script src="~/js/data.js"></script>
+  <script src="~/js/wireframe.js"></script>
+  <script src="~/js/prototypes.js"></script>
+  <script src="~/js/roadmap.js"></script>
+  <script src="~/js/quick-wins.js"></script>
+  <script src="~/js/photos.js"></script>
+</body>
+</html>

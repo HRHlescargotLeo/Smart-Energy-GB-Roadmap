@@ -107,7 +107,7 @@
   }
   function linkHTML(k) {
     var l = LINKS[k];
-    return '<a class="route-card" href="' + l[0] + '" data-route="' + k + '"><span class="route-title">' + esc(l[1]) + '</span><span class="route-text">' + esc(l[2]) + '</span></a>';
+    return '<a class="route-card" href="' + (window.segbPageHref ? window.segbPageHref(l[0]) : l[0]) + '" data-route="' + k + '"><span class="route-title">' + esc(l[1]) + '</span><span class="route-text">' + esc(l[2]) + '</span></a>';
   }
   function initAssistants() {
     $all('[data-assistant]').forEach(function (box) {

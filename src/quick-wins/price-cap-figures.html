@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correct the price cap figures — Smart Energy GB quick win</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body class="qw-page">
+  <!-- @@include header-qw.html -->
+
+  <main id="main" class="flush">
+    <div class="page-head qw-head">
+      <div class="container">
+        <p class="wf-meta"><a href="~/quick-wins/index.html">Quick wins</a> › Prices and using your meter</p>
+        <p class="qw-kicker">Quick win 8 of 28</p>
+        <h1>Correct the price cap figures</h1>
+        <div class="qw-summary">
+          <div class="qw-today"><h2>Today</h2><p>The price cap page gives the July to September 2026 cap as £1,862 in its text and £1,663 in its table. Ofgem's figure is £1,663. The footnote uses older typical-use figures (2,700 and 11,500 kWh) than Ofgem's current ones (2,500 and 9,500 kWh).</p></div>
+          <div class="qw-change"><h2>The change</h2><p>Correct the figures, add the date they apply from and a line saying where they come from, and check every page that repeats them.</p></div>
+        </div>
+        <div class="qw-actions">
+          <button type="button" class="btn btn-secondary qw-shortlist" data-shortlist="price-cap-figures" aria-pressed="false">Add to shortlist</button>
+          <a class="qw-shortlist-link" href="~/quick-wins/index.html#shortlist" data-shortlist-count>Your shortlist</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Before and after -->
+    <section class="qw-demo" data-ba aria-labelledby="ba-title">
+      <div class="container">
+        <div class="qw-demo-head">
+          <h2 class="section-title" id="ba-title">See the difference</h2>
+          <div class="seg" role="radiogroup" aria-label="Show">
+            <button type="button" role="radio" aria-checked="false" data-ba-show="before">Today</button>
+            <button type="button" role="radio" aria-checked="false" data-ba-show="after">With the change</button>
+            <button type="button" role="radio" aria-checked="true" data-ba-show="both">Both</button>
+          </div>
+        </div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Switch between today and the change, or see both together. "Today" is a simplified drawing of the live site, not a screenshot. Choosing a view and adding to the shortlist are tracked as events.</p>
+        <div class="ba-panes ba-panes-stack" data-ba-mode="both">
+          <div class="ba-pane" data-ba-pane="before">
+            <p class="ba-label">Today</p>
+            <div class="ba-frame">
+              <div class="mock mock-text">
+                <p>"The July - September 2026 price cap is currently set at <mark>£1,862</mark> (up 13% vs April to June)."</p>
+                <table class="rates"><tbody><tr><th scope="row">Current price cap: 1 Jul to 30 Sept 2026</th><td><mark>£1,663 a year</mark></td></tr></tbody></table>
+                <p class="mock-caption">Footnote: 2,700 kWh of electricity, 11,500 kWh of gas</p>
+              </div>
+            </div>
+          </div>
+          <div class="ba-pane" data-ba-pane="after">
+            <p class="ba-label ba-label-after">With the change</p>
+            <div class="ba-frame">
+              <div class="cap-grid">
+                <div class="panel cap-now"><p class="eyebrow">Price cap, 1 July to 30 September 2026</p><p class="cap-figure">£1,663<small> a year</small></p><p>For typical use of 2,500 kWh of electricity and 9,500 kWh of gas, paying by direct debit.</p></div>
+                <div class="panel surface cap-next"><p class="eyebrow">From 1 October 2026</p><p class="cap-figure">£1,723<small> a year</small></p><p>Up 4%. Source: Ofgem. Checked [date].</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qw-why" aria-labelledby="why-title">
+      <div class="container">
+        <h2 id="why-title">Why it's worth doing</h2>
+        <p>Price cap content is some of the most searched-for on the site, and a figure that contradicts itself undermines everything else on the page.</p>
+        <p class="qw-related"><span class="qw-related-label">Also in the big ideas</span>A fuller version of this is part of <a href="~/pages/energy-prices.html">prototype 3, Energy prices</a>. This quick win can be done on its own, without the rest of that prototype.</p>
+        <p class="qw-note"><strong>Good to know:</strong> This is the content fix only. Holding the figures in one record so they update themselves is part of the bigger Energy prices prototype.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- @@include footer.html -->
+  <script src="~/js/data.js"></script>
+  <script src="~/js/wireframe.js"></script>
+  <script src="~/js/prototypes.js"></script>
+  <script src="~/js/roadmap.js"></script>
+  <script src="~/js/quick-wins.js"></script>
+  <script src="~/js/photos.js"></script>
+</body>
+</html>

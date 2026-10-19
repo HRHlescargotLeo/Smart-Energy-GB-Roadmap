@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Put myths and facts in one place — Smart Energy GB quick win</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body class="qw-page">
+  <!-- @@include header-qw.html -->
+
+  <main id="main" class="flush">
+    <div class="page-head qw-head">
+      <div class="container">
+        <p class="wf-meta"><a href="~/quick-wins/index.html">Quick wins</a> › Trust and reassurance</p>
+        <p class="qw-kicker">Quick win 12 of 28</p>
+        <h1>Put myths and facts in one place</h1>
+        <div class="qw-summary">
+          <div class="qw-today"><h2>Today</h2><p>Myth content is split between Smart meter facts and myths and a separate myth-busting section with its own pages.</p></div>
+          <div class="qw-change"><h2>The change</h2><p>One set of myth answers, each in the same format: the myth as people say it, the fact, and where the fact comes from. The same answers can appear on topic pages.</p></div>
+        </div>
+        <div class="qw-actions">
+          <button type="button" class="btn btn-secondary qw-shortlist" data-shortlist="myths-one-place" aria-pressed="false">Add to shortlist</button>
+          <a class="qw-shortlist-link" href="~/quick-wins/index.html#shortlist" data-shortlist-count>Your shortlist</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Before and after -->
+    <section class="qw-demo" data-ba aria-labelledby="ba-title">
+      <div class="container">
+        <div class="qw-demo-head">
+          <h2 class="section-title" id="ba-title">See the difference</h2>
+          <div class="seg" role="radiogroup" aria-label="Show">
+            <button type="button" role="radio" aria-checked="false" data-ba-show="before">Today</button>
+            <button type="button" role="radio" aria-checked="false" data-ba-show="after">With the change</button>
+            <button type="button" role="radio" aria-checked="true" data-ba-show="both">Both</button>
+          </div>
+        </div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Switch between today and the change, or see both together. "Today" is a simplified drawing of the live site, not a screenshot. Choosing a view and adding to the shortlist are tracked as events.</p>
+        <div class="ba-panes ba-panes-stack" data-ba-mode="both">
+          <div class="ba-pane" data-ba-pane="before">
+            <p class="ba-label">Today</p>
+            <div class="ba-frame">
+              <div class="mock mock-stack"><p class="mock-caption">Two places today</p><span>About smart meters › Smart meter facts and myths</span><span>About smart meters › Myth-busting smart meter problems › (several separate pages)</span></div>
+            </div>
+          </div>
+          <div class="ba-pane" data-ba-pane="after">
+            <p class="ba-label ba-label-after">With the change</p>
+            <div class="ba-frame">
+              <div class="grid grid-2">
+                <div class="myth-card"><p class="myth"><span class="badge">Myth</span> Smart meters need your Wi-Fi to work.</p><p class="fact"><span class="badge solid">Fact</span> No. Smart meters send readings over their own secure network, separate from the internet.</p></div>
+                <div class="myth-card"><p class="myth"><span class="badge">Myth</span> You can't switch supplier with a smart meter.</p><p class="fact"><span class="badge solid">Fact</span> You can switch as you would with any meter. Your smart meter keeps sending readings to your new supplier.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qw-why" aria-labelledby="why-title">
+      <div class="container">
+        <h2 id="why-title">Why it's worth doing</h2>
+        <p>People who've heard something worrying want a straight answer quickly. One consistent format is easier to read, easier to keep accurate and easier to measure.</p>
+        <p class="qw-related"><span class="qw-related-label">Also in the big ideas</span>A fuller version of this is part of <a href="~/pages/answers.html">prototype 5, Find an answer</a>. This quick win can be done on its own, without the rest of that prototype.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- @@include footer.html -->
+  <script src="~/js/data.js"></script>
+  <script src="~/js/wireframe.js"></script>
+  <script src="~/js/prototypes.js"></script>
+  <script src="~/js/roadmap.js"></script>
+  <script src="~/js/quick-wins.js"></script>
+  <script src="~/js/photos.js"></script>
+</body>
+</html>
